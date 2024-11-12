@@ -1,0 +1,37 @@
+{
+  "[vue]": {
+    "editor.defaultFormatter": "Vue.volar"
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "never"
+  },
+  "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+  "editor.fontSize": 15,
+  "editor.formatOnSave": false,
+  "editor.linkedEditing": true,
+  "editor.rulers": [120],
+  "eslint.useFlatConfig": true,
+  "files.associations": {
+    "*.css": "unocss"
+  },
+  "files.autoSave": "onFocusChange",
+  "javascript.preferences.renameMatchingJsxTags": true,
+  "npm.packageManager": "pnpm",
+  "prettier.enable": false,
+  "search.exclude": {
+    "**/.output": true,
+    "**/.pnp.*": true,
+    "**/dist": true,
+    "node_modules": true,
+    "pnpm-lock.yaml": true
+  },
+  "search.useIgnoreFiles": false,
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "typescript.preferences.importModuleSpecifier": "non-relative",
+  "typescript.preferences.renameMatchingJsxTags": true,
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "volar.autoCompleteRefs": true,
+  "volar.completion.preferredTagNameCase": "pascal",
+  "window.zoomLevel": 0.05
+}
