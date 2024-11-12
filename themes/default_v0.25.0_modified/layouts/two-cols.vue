@@ -1,5 +1,9 @@
 <!--
-  Usage:
+This overrides the `two-cols` layout from the default theme.
+This is very similar to `two-cols-header`, but with a custom footer and also the cols are top oriented.
+
+Example usage:
+
 ```md
 ---
 layout: two-cols
@@ -22,19 +26,26 @@ This shows on the right
 -->
 
 <script setup lang="ts">
-import Default from './default.vue'
+import { useSlots } from 'vue'
+import Footer from '../components/Footer.vue'
 
-const props = defineProps<{
-  innerClass: string
-}>()
+const props = withDefaults(defineProps<{
+  innerClass?: string
+}>(), {
+  innerClass: '',
+})
+
+const slots = useSlots()
+
+const hasSlot = (slot_name: string) => !!slots[slot_name]
 </script>
 
 <template>
-  <Default class="two-columns">
-    <h1 class="text-left">
+  <div class="slidev-layout two-columns">
+    <div v-if="hasSlot('default')" class="text-left">
       <slot />
-    </h1>
-    <div class="grid grid-cols-2">
+    </div>
+    <div class="grid grid-cols-2 gap-8">
       <div class="col-left" :class="props.innerClass">
         <slot name="left" />
       </div>
@@ -42,5 +53,6 @@ const props = defineProps<{
         <slot name="right" />
       </div>
     </div>
-  </Default>
+    <Footer />
+  </div>
 </template>
