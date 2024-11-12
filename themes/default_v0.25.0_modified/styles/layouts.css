@@ -3,7 +3,9 @@
     @apply -mt-2 opacity-50 mb-4;
   }
 
-  p + h2, ul + h2, table + h2 {
+  p + h2,
+  ul + h2,
+  table + h2 {
     @apply mt-10;
   }
 
@@ -44,7 +46,6 @@
     @apply text-6xl leading-20;
   }
 }
-
 
 .slidev-layout.fact {
   @apply text-center grid h-full;

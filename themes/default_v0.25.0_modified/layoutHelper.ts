@@ -16,9 +16,6 @@ export function handleBackground(background?: string, dim = false): CSSPropertie
     background: isColor
       ? background
       : undefined,
-    color: (background && !isColor)
-      ? 'white'
-      : undefined,
     backgroundImage: isColor
       ? undefined
       : background
@@ -26,9 +23,12 @@ export function handleBackground(background?: string, dim = false): CSSPropertie
           ? `linear-gradient(#0005, #0008), url(${resolveAssetUrl(background)})`
           : `url("${resolveAssetUrl(background)}")`
         : undefined,
-    backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
+    color: (background && !isColor)
+      ? 'white'
+      : undefined,
   }
 
   if (!style.background)
