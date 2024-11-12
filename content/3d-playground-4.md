@@ -16,7 +16,7 @@ import { TresCanvas } from '@tresjs/core'
 
 <template>
   <TresCanvas clear-color="E1F4FF">
-    <!-- 3d scene here -->
+    <TresGridHelper />
   </TresCanvas>
 </template>
 ```
