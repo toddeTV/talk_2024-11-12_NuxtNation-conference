@@ -12,6 +12,8 @@ const steps = [
   'World', // 3
   'Camera', // 4
   'Lights', // 5
+  'Meshes', // 6
+  'Shadows', // 7
 ]
 
 const currentStep = computed(() => {
