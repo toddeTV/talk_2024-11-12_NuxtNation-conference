@@ -11,14 +11,6 @@ layout: two-cols
 ````md magic-move {lines: true}
 ```vue {*}
 <script setup lang="ts">
-</script>
-
-<template>
-</template>
-```
-
-```vue {2,6-8}
-<script setup lang="ts">
 import { TresCanvas } from '@tresjs/core'
 </script>
 
@@ -30,16 +22,10 @@ import { TresCanvas } from '@tresjs/core'
 ```
 ````
 
-<div v-click="1">
-  Clear-color could be the sky.
-</div>
-
-<div v-click="1">
-  Here "full screen", but can be any container in your DOM.
-</div>
+Thankfully, ThreeJS and TresJS do this for us when setting up a canvas.
 
 ::right::
 
-<BrowserWrapper max-height>
-  <div class="h-full h-full bg-[#E1F4FF]" v-click="1"></div>
+<BrowserWrapper max-height background="#E1F4FF">
+  <iframe width="100%" height="100%" src="//10.0.10.23:3000/game?world"></iframe>
 </BrowserWrapper>

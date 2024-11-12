@@ -8,8 +8,9 @@ const props = defineProps<{
 const steps = [
   undefined,
   'Renderer',
-  'World',
   'Canvas',
+  'World',
+  'Camera',
 ]
 
 const currentStep = computed(() => {
