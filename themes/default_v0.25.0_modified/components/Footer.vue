@@ -11,9 +11,9 @@ const pageProcess = computed(() => {
 </script>
 
 <template>
-  <footer class="flex flex-col justify-between w-full mt-auto text-blue-500 dark:text-white">
-    <!-- infos: left website hyperlink and right the page number -->
-    <div class="flex justify-between w-full text-blue-500 dark:text-white">
+  <!-- infos: left website hyperlink and right the page number -->
+  <footer class="absolute bottom-0 left-0 w-full px-14 pb-8">
+    <div class="w-full flex justify-between">
       <a
         v-if="configs.author.website"
         class="mb-0 baseColor !border-b-0"
@@ -28,14 +28,14 @@ const pageProcess = computed(() => {
         <span v-if="configs.themeConfig.showTotalPageCount"> / {{ total }}</span>
       </div>
     </div>
-
-    <!-- progress bar -->
-    <div v-if="configs.themeConfig.showPageProcessBar" class="absolute bottom-0 left-0 w-full">
-      <div class="w-full h-2">
-        <div class="processColor h-2" :style="`width: ${pageProcess}%`" />
-      </div>
-    </div>
   </footer>
+
+  <!-- progress bar -->
+  <div v-if="configs.themeConfig.showPageProcessBar" class="absolute bottom-0 left-0 w-full">
+    <div class="w-full h-2">
+      <div class="processColor h-2" :style="`width: ${pageProcess}%`" />
+    </div>
+  </div>
 </template>
 
 <style lang="css" scoped>

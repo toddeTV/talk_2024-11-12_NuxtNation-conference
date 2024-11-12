@@ -3,10 +3,8 @@ import Footer from '../components/Footer.vue'
 </script>
 
 <template>
-  <div class="bg-main slidev-layout flex flex-col h-full">
-    <div class="mt-auto mb-auto flex-grow">
-      <slot />
-    </div>
+  <div class="bg-main slidev-layout default flex flex-col h-full">
+    <slot />
     <Footer />
   </div>
 </template>
