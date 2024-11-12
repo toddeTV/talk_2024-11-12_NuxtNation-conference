@@ -1,0 +1,38 @@
+{
+  "name": "toddetv_talk_2024-11-12_NuxtNation-conference",
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "packageManager": "pnpm@9.10.0",
+  "description": "",
+  "author": "Thorsten Seyschab <business@todde.tv> (https://todde.tv/)",
+  "contributors": [
+    {
+      "name": "Thorsten Seyschab",
+      "email": "business@todde.tv",
+      "url": "https://todde.tv/"
+    }
+  ],
+  "license": "PRIVATE",
+  "homepage": "https://github.com/toddeTV/talk_2024-11-12_NuxtNation-conference",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/toddeTV/talk_2024-11-12_NuxtNation-conference"
+  },
+  "bugs": {
+    "url": "https://github.com/toddeTV/talk_2024-11-12_NuxtNation-conference/issues"
+  },
+  "engines": {
+    "node": "20",
+    "pnpm": "9"
+  },
+  "scripts": {
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "@tsconfig/node20": "20.1.4",
+    "@types/node": "20.16.5",
+    "typescript": "5.5.4"
+  }
+}
