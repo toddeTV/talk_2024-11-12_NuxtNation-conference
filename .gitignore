@@ -1,0 +1,31 @@
+# general
+.DS_Store
+coverage
+*.local
+.vite-inspect
+.remote-assets
+components.d.ts
+
+# Logs
+logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# dependencies
+node_modules
+
+# output
+*.tsbuildinfo
+dist
+dist-ssr
+.output
+
+# Editor directories and files
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
