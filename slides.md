@@ -75,6 +75,10 @@ src: content/3d-playground-4.md
 ---
 
 ---
+src: content/3d-playground-5.md
+---
+
+---
 src: content/zlig-demo.md
 ---
 

@@ -6,11 +6,12 @@ const props = defineProps<{
 }>()
 
 const steps = [
-  undefined,
-  'Renderer',
-  'Canvas',
-  'World',
-  'Camera',
+  undefined, // 0
+  'Renderer', // 1
+  'Canvas', // 2
+  'World', // 3
+  'Camera', // 4
+  'Lights', // 5
 ]
 
 const currentStep = computed(() => {

@@ -21,7 +21,7 @@ import { TresCanvas } from '@tresjs/core'
 </template>
 ```
 
-```vue {7}
+```vue {7-8}
 <script setup lang="ts">
 import { TresCanvas } from '@tresjs/core'
 </script>
@@ -29,6 +29,7 @@ import { TresCanvas } from '@tresjs/core'
 <template>
   <TresCanvas clear-color="E1F4FF">
     <TresGridHelper />
+    <TresAxesHelper />
   </TresCanvas>
 </template>
 ```
