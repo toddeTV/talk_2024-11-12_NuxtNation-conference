@@ -6,9 +6,7 @@ layout: two-cols
 
 ::left::
 
-<div class="text-sm baseColor opacity-40">1. Renderer</div>
-<div class="text-xl baseColor opacity-60">2. World</div>
-<div class="text-3xl baseColor">3. Canvas</div>
+<PlaygroundHeadlines :step="3" />
 
 ````md magic-move {lines: true}
 ```vue {*}
