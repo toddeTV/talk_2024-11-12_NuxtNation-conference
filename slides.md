@@ -57,3 +57,7 @@ src: content/start.md
 ---
 src: content/webgl-threejs-tresjs.md
 ---
+
+---
+src: content/gaming-in-the-browser.md
+---
