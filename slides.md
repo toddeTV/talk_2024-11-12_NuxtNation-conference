@@ -59,5 +59,17 @@ src: content/webgl-threejs-tresjs.md
 ---
 
 ---
+src: content/3d-playground-1.md
+---
+
+---
+src: content/3d-playground-2.md
+---
+
+---
+src: content/3d-playground-3.md
+---
+
+---
 src: content/gaming-in-the-browser.md
 ---
