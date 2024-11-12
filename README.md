@@ -58,9 +58,27 @@ In the browser install:
 6. Install dependencies: `pnpm i`
 7. Happy coding <3
 
+### scripts / commands
+
+```shell
+# dev run
+pnpm run dev[:network]
+# you get (with set `:network` it will be open in your network; otherwise only local):
+# - public slide show   > http://[localhost/IP]:3030/
+# - presenter mode      > http://[localhost/IP]:3030/presenter/
+
+# build
+pnpm run build
+
+# export
+pnpm run export
+```
+
 ### Docs and helper websites
 
-\[currently none\]
+- [Slidev](https://github.com/slidevjs/slidev)
+  - [documentation](https://sli.dev/)
+  - [themes](https://github.com/slidevjs/themes)
 
 ## prod
 
@@ -80,6 +98,7 @@ Honorable mentions to people and projects that helped this project:
 Used services, dependencies and materials - besides the ones in `./package.json`:
 
 - [GitHub Copilot](https://github.com/features/copilot) was used in private mode for programming questions.
+- [Slidev](https://github.com/slidevjs/slidev) used for creating the slides of the talk.
 
 ## License
 
