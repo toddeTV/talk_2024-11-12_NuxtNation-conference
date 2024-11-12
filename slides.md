@@ -71,5 +71,13 @@ src: content/3d-playground-3.md
 ---
 
 ---
+src: content/3d-playground-4.md
+---
+
+---
+src: content/zlig-demo.md
+---
+
+---
 src: content/gaming-in-the-browser.md
 ---
