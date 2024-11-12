@@ -25,12 +25,16 @@ import { TresCanvas } from '@tresjs/core'
 </script>
 
 <template>
-  <TresCanvas clear-color="82DBC5">
+  <TresCanvas clear-color="E1F4FF">
     <!-- 3d scene here -->
   </TresCanvas>
 </template>
 ```
 ````
+
+<div v-click="1">
+  Clear-color could be the sky.
+</div>
 
 <div v-click="1">
   Here "full screen", but can be any container in your DOM.
@@ -39,5 +43,5 @@ import { TresCanvas } from '@tresjs/core'
 ::right::
 
 <BrowserWrapper max-height>
-  <div class="h-full h-full bg-[#82DBC5]" v-click="1"></div>
+  <div class="h-full h-full bg-[#E1F4FF]" v-click="1"></div>
 </BrowserWrapper>
