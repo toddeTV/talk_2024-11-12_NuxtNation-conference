@@ -103,5 +103,13 @@ src: content/zlig-demo.md
 ---
 
 ---
+src: content/zlig-demo-s1.md
+---
+
+---
+src: content/zlig-demo-s2.md
+---
+
+---
 src: content/gaming-in-the-browser.md
 ---
