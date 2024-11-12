@@ -23,7 +23,7 @@ import { OrbitControls } from '@tresjs/cientos'
     <OrbitControls />
     <TresAmbientLight :intensity="0.5" />
     <TresDirectionalLight :intensity="1.2"
-      :position="[-3, 3, 5]"
+      :position="[-0.5, 3, 5]"
     />
   </TresCanvas>
 </template>
