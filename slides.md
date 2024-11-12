@@ -1,9 +1,10 @@
 ---
-aspectRatio: 16/9
+# ==== for the whole presentation
+aspectRatio: 16/10
 author:
+  avatar: /assets/ThorstenSeyschab.jpg
   name: Thorsten Seyschab
   website: todde.tv
-background: false
 canvasWidth: 1024
 # class: bg-gray-500
 colorSchema: light
@@ -28,45 +29,27 @@ info: |
   [NuxtNation 2024](https://nuxtnation.com/) conference (online).
 
   The presented, repository and documentation language is `English`.
-layout: default
 lineNumbers: true
 # enable MDC Syntax: https://sli.dev/features/mdc
 mdc: true
 monaco: false
 plantUmlServer: https://www.plantuml.com/plantuml
 record: true
-remoteAssets: true
+remoteAssets: false
 routerMode: history
 selectable: false
 theme: ./themes/default_v0.25.0_modified
 themeConfig:
   # primary: '#30D09B'
   primary: '#26ab7a'
+  complementary: '#ab2657'
   showPageProcessBar: true
   showTotalPageCount: false
 title: Playing with Nuxt in 3D (talk on 2024-11-12 at the NuxtNation conference (online))
 titleTemplate: '%s'
 # slide transition: https://sli.dev/guide/animations.html#slide-transitions
-transition: none
+# transition: none
+
+# ==== only for the first slide
+src: content/start.md
 ---
-
-# Welcome to Slidev
-
----
-layout: two-cols
----
-
-# Some test Headline
-
-::left::
-## Left
-This shows on the left
-
-::right::
-## Right
-This shows on the right
-
-### test
-#### test
-##### test
-###### test
