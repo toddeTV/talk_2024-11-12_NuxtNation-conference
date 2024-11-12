@@ -1,0 +1,21 @@
+{
+  "recommendations": [
+    "antfu.goto-alias",
+    "antfu.iconify",
+    "antfu.slidev",
+    "antfu.unocss",
+    "bradlc.vscode-tailwindcss",
+    "dbaeumer.vscode-eslint",
+    "eamodio.gitlens",
+    "GitHub.copilot",
+    "GitHub.vscode-pull-request-github",
+    "Gruntfuggly.todo-tree",
+    "naumovs.color-highlight",
+    "PascalReitermann93.vscode-yaml-sort",
+    "richie5um2.vscode-sort-json",
+    "streetsidesoftware.code-spell-checker",
+    "Vue.volar",
+    "yoavbls.pretty-ts-errors",
+    "yzhang.markdown-all-in-one"
+  ]
+}
