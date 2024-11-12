@@ -6,6 +6,18 @@
     color: var(--slidev-theme-primary);
   }
 
+  .complementaryColor {
+    color: var(--slidev-theme-complementary);
+  }
+
+  .border-baseColor {
+    border-color: var(--slidev-theme-primary);
+  }
+
+  .border-complementaryColor {
+    border-color: var(--slidev-theme-complementary);
+  }
+
   /* h1 + p {
     @apply -mt-2 opacity-50 mb-4;
   } */
@@ -34,6 +46,18 @@
   h4 {
     @apply text-base;
     color: var(--slidev-theme-primary);
+  }
+
+  ul {
+    @apply space-y-2;
+  }
+
+  li > ul {
+    @apply mt-2;
+  }
+
+  h2 + ul {
+    @apply mt-4;
   }
 }
 

@@ -1,12 +1,11 @@
 <script setup lang="ts">
-import { configs, themeVars } from '@slidev/client'
+import { configs } from '@slidev/client'
 import { computed } from 'vue'
 import Footer from '../components/Footer.vue'
 import { handleBackground, resolveAssetUrl } from '../layoutHelper'
 
 const props = withDefaults(defineProps<{
-  background: string
-  avatar: string
+  background?: string
   leftOrientation: 'top' | 'center' | 'bottom'
 }>(), {
   background: '',
@@ -31,7 +30,7 @@ const style = computed(() => handleBackground(props.background, true))
       <div class="flex flex-col justify-center h-full max-w-1/3">
         <img
           :alt="`Avatar of ${configs.author.name}`"
-          :class="`rounded-full w-full border-5 border-[${themeVars['--slidev-theme-primary']}]`"
+          class="rounded-full w-full border-5 border-baseColor"
           :src="resolveAssetUrl(configs.author.avatar)"
         >
       </div>

@@ -26,19 +26,26 @@ This shows on the right
 -->
 
 <script setup lang="ts">
+import { useSlots } from 'vue'
 import Footer from '../components/Footer.vue'
 
-const props = defineProps<{
-  innerClass: string
-}>()
+const props = withDefaults(defineProps<{
+  innerClass?: string
+}>(), {
+  innerClass: '',
+})
+
+const slots = useSlots()
+
+const hasSlot = (slot_name: string) => !!slots[slot_name]
 </script>
 
 <template>
   <div class="slidev-layout two-columns">
-    <h1 class="text-left">
+    <div v-if="hasSlot('default')" class="text-left">
       <slot />
-    </h1>
-    <div class="grid grid-cols-2">
+    </div>
+    <div class="grid grid-cols-2 gap-8">
       <div class="col-left" :class="props.innerClass">
         <slot name="left" />
       </div>

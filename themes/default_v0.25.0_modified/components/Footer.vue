@@ -12,7 +12,7 @@ const pageProcess = computed(() => {
 
 <template>
   <!-- infos: left website hyperlink and right the page number -->
-  <footer class="absolute bottom-0 left-0 w-full px-14 pb-8">
+  <footer class="absolute bottom-0 left-0 w-full px-14 pb-8 -z-1">
     <div class="w-full flex justify-between">
       <a
         v-if="configs.author.website"
