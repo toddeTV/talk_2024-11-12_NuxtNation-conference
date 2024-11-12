@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { configs, useNav, useSlideContext } from '@slidev/client'
+import { configs, useNav } from '@slidev/client'
 import { computed } from 'vue'
 
 // const { $slidev } = useSlideContext()
