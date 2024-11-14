@@ -16,30 +16,35 @@ leftOrientation: center
             v-mark="{ at: 1, color: '#26ab7a', type: 'box' }"
         >
             <div class="flex">
-                <mdi-github class="baseColor mr-2" />
+                <mdi-web class="baseColor mt-0.5 mr-2" />
+                <a rel="noopener noreferrer" target="_blank" href="https://todde.tv/">https://todde.tv/</a>
+            </div>
+            <div class="flex">
+                <mdi-github class="baseColor mt-0.5 mr-2" />
                 <a rel="noopener noreferrer" target="_blank" href="https://github.com/toddeTV">toddeTV</a>
             </div>
             <div class="flex">
-                <mdi-linkedin class="baseColor mr-2" />
+                <mdi-linkedin class="baseColor mt-0.5 mr-2" />
                 <a rel="noopener noreferrer" target="_blank" href="https://www.linkedin.com/in/toddetv/">toddeTV</a>
             </div>
             <div class="flex">
-                <line-md-twitter-x class="baseColor mr-2" />
+                <line-md-twitter-x class="baseColor mt-0.5 mr-2" />
                 <a rel="noopener noreferrer" target="_blank" href="https://x.com/toddeTV">toddeTV</a>
             </div>
             <div class="flex">
                 <!-- TODO wrong discord URI? -->
-                <mdi-discord class="baseColor mr-2" />
+                <mdi-discord class="baseColor mt-0.5 mr-2" />
                 <a rel="noopener noreferrer" target="_blank" href="https://discordapp.com/users/toddeTV">toddeTV</a>
             </div>
             <div class="flex">
-                <mdi-email class="baseColor mr-2" />
+                <simple-icons-bluesky class="baseColor mt-0.5 mr-2" />
+                <a rel="noopener noreferrer" target="_blank" href="https://bsky.app/profile/todde.tv">todde.tv</a>
+                <ant-design-exclamation-circle-filled class="color-red-600 mt-0.5 ml-2" />
+            </div>
+            <!-- <div class="flex">
+                <mdi-email class="baseColor mt-0.5 mr-2" />
                 <a rel="noopener noreferrer" target="_blank" href="mailto:business@todde.tv">business@todde.tv</a>
-            </div>
-            <div class="flex">
-                <mdi-web class="baseColor mr-2" />
-                <a rel="noopener noreferrer" target="_blank" href="https://todde.tv/">https://todde.tv/</a>
-            </div>
+            </div> -->
         </div>
         <div
             class="absolute top-30 left-0 px-5 py-2 whitespace-nowrap"
