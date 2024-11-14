@@ -6,7 +6,7 @@ import { computed } from 'vue'
 const { currentPage, total } = useNav()
 
 const totalToUse = computed<number>(() => {
-  if(configs.manipulateTotalSlideCountOnFooter){
+  if (configs.manipulateTotalSlideCountOnFooter) {
     return total.value + configs.manipulateTotalSlideCountOnFooter as number
   }
   return total.value
@@ -14,8 +14,10 @@ const totalToUse = computed<number>(() => {
 
 const pageProcess = computed(() => {
   const process = Math.round(((currentPage.value * 100) / totalToUse.value) * 100) / 100
-  if(process < 0) return 0
-  if(process > 100) return 100
+  if (process < 0)
+    return 0
+  if (process > 100)
+    return 100
   return process
 })
 </script>
