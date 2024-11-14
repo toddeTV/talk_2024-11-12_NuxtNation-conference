@@ -30,10 +30,10 @@
   "scripts": {
     "build": "slidev build",
     "dev": "slidev --open",
-    "dev:network": "$npm_execpath dev --remote",
+    "dev:network": "run-s \"dev --remote\"",
     "export": "slidev export",
     "lint": "eslint .",
-    "lint:fix": "$npm_execpath lint --fix"
+    "lint:fix": "run-s \"lint --fix\""
   },
   "slidev": {
     "defaults": {
@@ -64,6 +64,7 @@
     "eslint-plugin-format": "0.1.2",
     "eslint-plugin-perfectionist": "3.6.0",
     "eslint-plugin-vue": "9.28.0",
+    "npm-run-all2": "7.0.1",
     "prettier-plugin-slidev": "1.0.5",
     "prism-theme-vars": "0.2.5",
     "typescript": "5.5.4"
