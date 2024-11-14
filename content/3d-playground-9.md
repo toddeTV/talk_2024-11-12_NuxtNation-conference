@@ -9,7 +9,7 @@ layout: two-cols
 <PlaygroundHeadlines :step="9" />
 
 ````md magic-move {lines: true}
-```vue {3-5,12-14}
+```vue {2-4,10-12}
 <script setup lang="ts">
 import modelLoader from '@/assets/models/Windmill.gltf'
 const { scenes: { Windmill } } = await modelLoader
@@ -31,5 +31,5 @@ const { scenes: { Windmill } } = await modelLoader
 ::right::
 
 <BrowserWrapper max-height background="#E1F4FF">
-  <iframe width="100%" height="100%" src="//10.0.10.23:3000/game?world&models"></iframe>
+  <iframe width="100%" height="100%" src="//localhost:3000/game?world&models"></iframe>
 </BrowserWrapper>
