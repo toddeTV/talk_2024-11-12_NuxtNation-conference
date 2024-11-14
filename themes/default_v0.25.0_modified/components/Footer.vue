@@ -5,8 +5,18 @@ import { computed } from 'vue'
 // const { $slidev } = useSlideContext()
 const { currentPage, total } = useNav()
 
+const totalToUse = computed<number>(() => {
+  if(configs.manipulateTotalSlideCountOnFooter){
+    return total.value + configs.manipulateTotalSlideCountOnFooter as number
+  }
+  return total.value
+})
+
 const pageProcess = computed(() => {
-  return Math.round(((currentPage.value * 100) / total.value) * 100) / 100
+  const process = Math.round(((currentPage.value * 100) / totalToUse.value) * 100) / 100
+  if(process < 0) return 0
+  if(process > 100) return 100
+  return process
 })
 </script>
 
@@ -25,7 +35,7 @@ const pageProcess = computed(() => {
       </a>
       <div class="baseColor">
         <span>{{ currentPage }}</span>
-        <span v-if="configs.themeConfig.showTotalPageCount"> / {{ total }}</span>
+        <span v-if="configs.themeConfig.showTotalPageCount"> / {{ totalToUse }}</span>
       </div>
     </div>
   </footer>
