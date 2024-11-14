@@ -21,9 +21,6 @@ importers:
       '@iconify-json/ant-design':
         specifier: 1.2.2
         version: 1.2.2
-      '@iconify-json/flag':
-        specifier: 1.2.0
-        version: 1.2.0
       '@iconify-json/line-md':
         specifier: 1.2.1
         version: 1.2.1
@@ -655,9 +652,6 @@ packages:
 
   '@iconify-json/carbon@1.2.4':
     resolution: {integrity: sha512-DhW2jjMVGwV0DLHc0cmDYohdtGxMra8UuwgjHrryPy+rQX4gXhJwCBBVP2h2UG/92AoRCTn7zUJve4WvY5MLYg==}
-
-  '@iconify-json/flag@1.2.0':
-    resolution: {integrity: sha512-1rbPZFJE9LUIow/oksKy5WXC8pWr2lYnstdWIcJ7C0iOPBF2C5QTCSAtY1NpzFdUrJhHkbYR0nuCJW0QO3OHeA==}
 
   '@iconify-json/line-md@1.2.1':
     resolution: {integrity: sha512-XMga2q5PiQ2LrU7K06hfqSYOA+7UFhRwhl52xvPCPAiLmtdfWBeX38nA46mcaLj7sdNo+DK+BJy9iTrzQ0ewNw==}
@@ -4578,10 +4572,6 @@ snapshots:
       '@iconify/types': 2.0.0
 
   '@iconify-json/carbon@1.2.4':
-    dependencies:
-      '@iconify/types': 2.0.0
-
-  '@iconify-json/flag@1.2.0':
     dependencies:
       '@iconify/types': 2.0.0
 

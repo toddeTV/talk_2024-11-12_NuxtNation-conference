@@ -107,7 +107,6 @@ Tipp: Favorite them and use the search over all item collections at once: https:
 | `phosphor`              | `ph`         | MIT                                                             |                |
 | `Material Design Icons` | `mdi`        | Apache 2.0 (commercial use is allowed, no attribution required) |                |
 | `Material Line Icons`   | `line-md`    | MIT                                                             | animated icons |
-| `Flag Icons`            | `flag`       | MIT                                                             |                |
 | `Ant Design Icons`      | `ant-design` | MIT                                                             |                |
 
 ### Docs and helper websites
