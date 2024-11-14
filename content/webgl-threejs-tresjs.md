@@ -65,22 +65,14 @@ layout: basic
   </div>
 
   <div
-    class="flex flex-col justify-start items-center w-screen h-50 absolute left-0 -bottom-21"
+    class="w-full h-50 absolute left-0 -bottom-21 text-center"
     v-mark="{ at: 0, color: '#26ab7a', type: 'box' }"
     v-click="0"
   >
-    <div>
-      <h1 class="!mb-0 !mt-2">GPU</h1>
-    </div>
-    <div>
-      <h1 class="!mb-0 !-mt-6">.</h1>
-    </div>
-    <div>
-      <h1 class="!mb-0 !-mt-6">.</h1>
-    </div>
-    <div>
-      <h1 class="!mb-0 !-mt-6">.</h1>
-    </div>
+    <h1 class="!mb-0 !mt-2">GPU</h1>
+    <h1 class="!mb-0 !-mt-6">.</h1>
+    <h1 class="!mb-0 !-mt-6">.</h1>
+    <h1 class="!mb-0 !-mt-6">.</h1>
   </div>
 
 </div>

@@ -102,13 +102,13 @@ type foo = { bar: 2 }
 This project uses the following icon collections in descending order, try sticking to them and use from top to bottom.
 Tipp: Favorite them and use the search over all item collections at once: https://icon-sets.iconify.design/?list=favorite
 
-| full name               | shorthand    | license                                                         | note           |
-| ----------------------- | ------------ | --------------------------------------------------------------- | -------------- |
-| `phosphor`              | `ph`         | MIT                                                             |                |
-| `Material Design Icons` | `mdi`        | Apache 2.0 (commercial use is allowed, no attribution required) |                |
-| `Material Line Icons`   | `line-md`    | MIT                                                             | animated icons |
-| `Flag Icons`            | `flag`       | MIT                                                             |                |
-| `Ant Design Icons`      | `ant-design` | MIT                                                             |                |
+| full name               | shorthand      | license                                                         | note           |
+| ----------------------- | -------------- | --------------------------------------------------------------- | -------------- |
+| `phosphor`              | `ph`           | MIT                                                             |                |
+| `Material Design Icons` | `mdi`          | Apache 2.0 (commercial use is allowed, no attribution required) |                |
+| `Material Line Icons`   | `line-md`      | MIT                                                             | animated icons |
+| `Ant Design Icons`      | `ant-design`   | MIT                                                             |                |
+| `Simple Icons`          | `simple-icons` | CC0 1.0                                                         |                |
 
 ### Docs and helper websites
 
