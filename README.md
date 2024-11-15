@@ -144,6 +144,7 @@ Used programs/ softwares, services and dependencies - besides the ones in `./pac
 Used assets/ materials including images and 3D models:
 
 - Game Project `zlig` hosted on [https://zlig.net/](https://zlig.net/) with source code on [https://github.com/toddeTV/zlig](https://github.com/toddeTV/zlig). Included materials in `zlig` are listed separately there as they are not part of this presentation project.
+- Portrait from `Thorsten Seyschab` by [Franziska Kestel](https://franziskakestel.de/).
 - Logo for `TresJS` from [https://tresjs.org/](https://tresjs.org/)
 - Logo for `ThreeJS` from [https://discourse.threejs.org/t/three-js-svg-logo/21835](https://discourse.threejs.org/t/three-js-svg-logo/21835)
 - Logo for `WebGL` from [https://en.m.wikipedia.org/wiki/File:WebGL_Logo.svg](https://en.m.wikipedia.org/wiki/File:WebGL_Logo.svg).
