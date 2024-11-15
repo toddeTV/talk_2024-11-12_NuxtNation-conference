@@ -55,3 +55,10 @@ layout: basic
         </div>
     </div>
 </div>
+
+<div class="mt-8 p-2" v-mark="{ at: 0, color: '#26ab7a', type: 'box' }">
+    <h2 class="!mb-2 !mt-0">Licenses</h2>
+    <div class="text-xs">
+        For detailed information regarding the materials used in this presentation - including 3D models, images, dependencies, icon packs, etc. - and their respective licenses and copyrights, please refer to the <code>README.md</code> file in the publicly available source code of this presentation slides, see above.
+    </div>
+</div>
