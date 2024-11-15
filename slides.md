@@ -49,7 +49,6 @@ title: Playing with Nuxt in 3D (talk on 2024-11-12 at the NuxtNation conference 
 titleTemplate: '%s'
 # slide transition: https://sli.dev/guide/animations.html#slide-transitions
 # transition: none
-manipulateTotalSlideCountOnFooter: -1 # for e.g. manipulating the total slide count process bar when using a source slide that should not add onto the total slide count
 
 # ==== only for the first slide
 src: content/start.md
@@ -117,4 +116,8 @@ src: content/gaming-in-the-browser.md
 
 ---
 src: content/end.md
+---
+
+---
+src: content/sources.md
 ---
