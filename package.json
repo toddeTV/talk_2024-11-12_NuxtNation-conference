@@ -67,6 +67,7 @@
     "npm-run-all2": "7.0.1",
     "prettier-plugin-slidev": "1.0.5",
     "prism-theme-vars": "0.2.5",
+    "qrcode.vue": "3.6.0",
     "typescript": "5.5.4"
   }
 }

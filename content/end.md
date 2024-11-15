@@ -2,20 +2,56 @@
 layout: basic
 ---
 
-# Game & Code
+# Game, Code & Licenses
 
-<div
-    class="flex-col gap-18 mt-4 h-full"
->
-    <div class="flex mb-8">
-        Code: <mdi-github class="baseColor mx-2" />
-        <a rel="noopener noreferrer" target="_blank" href="https://github.com/toddeTV/zlig">https://github.com/toddeTV/zlig</a>
+<div class="absolute right-15 top-15 p-1 pr-2" v-mark="{ at: 0, color: '#26ab7a', type: 'box' }">
+    <mdi-heart class="text-red-400 animate-pulse mx-2" /> Andreas Fehn <mdi-github class="baseColor mx-2" /> <a href="https://github.com/fehnomenal" target="_blank">fehnomenal</a>
+</div>
+
+<div class="flex flex-row gap-8 mt-8">
+    <div
+        class="p-4 flex flex-col items-center"
+        v-mark="{ at: 0, color: '#26ab7a', type: 'box' }"
+    >
+        <QRCode value="https://zlig.net/" :size="128" class="mb-6" />
+        <div class="flex flex-col gap-2">
+            <div class="whitespace-nowrap">
+                Game Online:
+            </div>
+            <div class="whitespace-nowrap">
+                <mdi-web class="baseColor mx-2" />
+                <a rel="noopener noreferrer" target="_blank" href="https://zlig.net/">https://zlig.net/</a>
+            </div>
+        </div>
     </div>
-    <div class="flex mb-8">
-        Game: <mdi-web class="baseColor mx-2" />
-        <a rel="noopener noreferrer" target="_blank" href="https://zlig.net/">https://zlig.net/</a>
+    <div
+        class="p-4 flex flex-col items-center"
+        v-mark="{ at: 0, color: '#26ab7a', type: 'box' }"
+    >
+        <QRCode value="https://github.com/toddeTV/zlig" :size="128" class="mb-6" />
+        <div class="flex flex-col gap-2">
+            <div class="whitespace-nowrap">
+                Game Source-Code:
+            </div>
+            <div class="whitespace-nowrap">
+                <mdi-github class="baseColor mx-2" />
+                <a rel="noopener noreferrer" target="_blank" href="https://github.com/toddeTV/zlig">https://github.com/toddeTV/zlig</a>
+            </div>
+        </div>
     </div>
-    <div class="flex">
-        <mdi-heart class="text-red-400 animate-pulse mx-2" /> Andreas Fehn <mdi-github class="baseColor mx-2" /> <a href="https://github.com/fehnomenal" target="_blank">fehnomenal</a>
+    <div
+        class="p-4 flex flex-col items-center"
+        v-mark="{ at: 0, color: '#26ab7a', type: 'box' }"
+    >
+        <QRCode value="https://github.com/toddeTV/talk_2024-11-12_NuxtNation-conference" :size="128" class="mb-6" />
+        <div class="flex flex-col gap-2">
+            <div class="whitespace-nowrap">
+                Presentation slides Source-Code:
+            </div>
+            <div class="w-full">
+                <mdi-github class="baseColor mx-2" />
+                <a rel="noopener noreferrer" target="_blank" href="https://github.com/toddeTV/talk_2024-11-12_NuxtNation-conference">https://.com/toddeTV/talk_2024-11-12_NuxtNation-conference</a>
+            </div>
+        </div>
     </div>
 </div>
