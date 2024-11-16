@@ -52,11 +52,17 @@ In the browser install:
    - see file `.vscode/extensions.json` for configuring some of the extensions
    - Restart or reload VSCode.
 5. In VSCode on the bottom left click your profile image and log in all services (GitHub due to VSCode extensions, ...)<br>
-   If the browser to VSCode callback fails, wait for the login popup on the bottom right to timeout (ca. 5 minutes) and
-   then on the upcoming popup question `You have not yet finished authorizing [...] Would you like to try a different way? (local server)` click `Yes` and use this alternative login mechanic.<br>
-   (When you do not want to wait for the timeout to happen, you can also click the `Cancel` to trigger the dialog faster.)
-6. Install dependencies: `pnpm i`
-7. Happy coding <3
+   If the browser to VSCode callback fails (e.g. due to remote working on a VM), wait for the login popup on the
+   bottom right to timeout (ca. 5 minutes) and then on the upcoming popup question<br>
+   `You have not yet finished authorizing [...] Would you like to try a different way? (local server)` click `Yes`
+   and use this alternative login mechanic.
+6. Duplicate `.env.example` as `.env` and set the environment variables:
+   1. You must set the variable `VITE_ZLIG_DEMO_BASE_URL` with the base URL of the `zlig` demo branch
+      [feat/conference-2024-nuxt-nation](https://github.com/toddeTV/zlig/tree/feat/conference-2024-nuxt-nation).
+      Therefore, you can pull this branch and use it locally (recommended!), or use the pre-build dev demo URL
+      from the `zlig` PR [#112](https://github.com/toddeTV/zlig/pull/112) (not recommended!).
+7. Install dependencies: `pnpm i`
+8. Happy coding <3
 
 ### scripts / commands
 
