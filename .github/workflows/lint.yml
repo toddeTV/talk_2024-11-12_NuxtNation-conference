@@ -18,12 +18,18 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - run: corepack enable
+      # - run: corepack enable
 
-      - uses: actions/setup-node@v3
+      - name: Setup pnpm as package manager
+        uses: pnpm/action-setup@v3
         with:
-          node-version: 20
-          cache: pnpm
+            version: 9.10.0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
 
       - name: 📦 Install dependencies
         run: pnpm install --frozen-lockfile
