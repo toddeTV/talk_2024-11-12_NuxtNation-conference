@@ -14,7 +14,7 @@ jobs:
   vercel-deploy-preview:
     runs-on: ubuntu-latest
     outputs: # needs `id` to reference the output
-      output1: ${{ steps.deploy.outputs.deploymentUrl }}
+      deploymentUrl: ${{ steps.deploy.outputs.deploymentUrl }}
     steps:
       - name: Checkout the Codebase
         uses: actions/checkout@v3
