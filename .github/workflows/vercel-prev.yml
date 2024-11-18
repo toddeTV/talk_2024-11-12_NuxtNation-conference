@@ -47,6 +47,7 @@ jobs:
           # echo "VITE_ZLIG_DEMO_BASE_URL=${{ secrets.VITE_ZLIG_DEMO_BASE_URL }}" >> $GITHUB_ENV
           echo "1 ${{ secrets.VITE_ZLIG_DEMO_BASE_URL }}"
           echo "2 ${{ env.VITE_ZLIG_DEMO_BASE_URL }}"
+          vercel env add plain VITE_ZLIG_DEMO_BASE_URL ${{ secrets.VITE_ZLIG_DEMO_BASE_URL }}
           vercel build --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Deploy Project Artifacts to Vercel
