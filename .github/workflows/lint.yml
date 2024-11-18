@@ -1,4 +1,4 @@
-name: lint
+name: Linting
 
 permissions:
   contents: read
