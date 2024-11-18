@@ -23,11 +23,8 @@ jobs:
           node-version: 20
           cache: pnpm
 
-      - name: set up pnpm
-        run: pnpm setup
-
       - name: Install Vercel CLI
-        run: pnpm install --global vercel@latest
+        run: pnpm add --global vercel@latest
 
       - name: Pull Vercel Environment Information
         run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
