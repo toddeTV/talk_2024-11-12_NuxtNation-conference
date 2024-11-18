@@ -44,7 +44,7 @@ jobs:
         id: deploy
         run: |
           vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }} > deploy.log
-          URL=$(cat deploy.log | grep -o 'https://[^ ]*.vercel.app' | head -n1)
+          URL=$(cat deploy.log | grep -o 'https:\/\/[^ ]*.vercel.app' | head -n1)
           echo "deploymentUrl=$URL" >> $GITHUB_OUTPUT
 
   add-comment-to-pr:
@@ -79,10 +79,14 @@ jobs:
                 issue_number: issueNumber,
             })
             const botComment = comments.find(comment => {
-                return comment.user.type === 'Bot' && comment.body.includes('Deployed at')
+                return comment.user.type === 'Bot' && comment.body.includes('Preview deployed (')
             })
 
-            const output = "Deployed at " + process.env.DEPLOYMENT_URL
+            // Get the current date and time
+            const now = $(date +'%Y-%m-%dT%H:%M:%S')
+
+            // Create the output message
+            const output = "Preview deployed (" + now + "): " + process.env.DEPLOYMENT_URL
 
             // If we have a comment, update it, otherwise create a new one
             if (botComment) {
