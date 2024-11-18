@@ -93,8 +93,8 @@ jobs:
             const output = `${outputPrefix}
 
               | URL | ${process.env.DEPLOYMENT_URL} |
-              |---|---|
-              | Last Updated | ${now}                        |
+              |:---|:---|
+              | Last Updated | ${now} |
             `
 
             // If we have a comment, update it, otherwise create a new one
