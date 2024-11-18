@@ -83,7 +83,7 @@ jobs:
             })
 
             // Get the current date and time
-            const now = $(date +'%Y-%m-%dT%H:%M:%S')
+            const now = (new Date).toISOString()
 
             // Create the output message
             const output = "Preview deployed (" + now + "): " + process.env.DEPLOYMENT_URL
