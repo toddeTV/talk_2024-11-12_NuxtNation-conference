@@ -19,9 +19,6 @@ jobs:
       - name: Checkout the Codebase
         uses: actions/checkout@v3
 
-      - name: Environment Setup
-        uses: ./.github/actions/environment-setup
-
       # - name: Enable Corepack
       #   run: corepack enable
 
