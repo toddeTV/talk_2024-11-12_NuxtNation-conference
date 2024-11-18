@@ -1,9 +1,7 @@
 {
   "buildCommand": "npm run build",
   "git": {
-    "deploymentEnabled": {
-      "main": false
-    }
+    "deploymentEnabled": false
   },
   "outputDirectory": "dist",
   "rewrites": [
