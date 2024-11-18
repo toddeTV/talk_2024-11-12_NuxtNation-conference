@@ -52,11 +52,17 @@ In the browser install:
    - see file `.vscode/extensions.json` for configuring some of the extensions
    - Restart or reload VSCode.
 5. In VSCode on the bottom left click your profile image and log in all services (GitHub due to VSCode extensions, ...)<br>
-   If the browser to VSCode callback fails, wait for the login popup on the bottom right to timeout (ca. 5 minutes) and
-   then on the upcoming popup question `You have not yet finished authorizing [...] Would you like to try a different way? (local server)` click `Yes` and use this alternative login mechanic.<br>
-   (When you do not want to wait for the timeout to happen, you can also click the `Cancel` to trigger the dialog faster.)
-6. Install dependencies: `pnpm i`
-7. Happy coding <3
+   If the browser to VSCode callback fails (e.g. due to remote working on a VM), wait for the login popup on the
+   bottom right to timeout (ca. 5 minutes) and then on the upcoming popup question<br>
+   `You have not yet finished authorizing [...] Would you like to try a different way? (local server)` click `Yes`
+   and use this alternative login mechanic.
+6. Duplicate `.env.example` as `.env` and set the environment variables:
+   1. You must set the variable `VITE_ZLIG_DEMO_BASE_URL` with the base URL of the `zlig` demo branch
+      [feat/conference-2024-nuxt-nation](https://github.com/toddeTV/zlig/tree/feat/conference-2024-nuxt-nation).
+      Therefore, you can pull this branch and use it locally (recommended!), or use the pre-build dev demo URL
+      from the `zlig` PR [#112](https://github.com/toddeTV/zlig/pull/112) (not recommended!).
+7. Install dependencies: `pnpm i`
+8. Happy coding <3
 
 ### scripts / commands
 
@@ -123,22 +129,44 @@ Building, deploying and hosting is done via \[not yet decided\].
 
 ## Attribution/ Contribution
 
-Head of project:
+Project founder & head of project:
 
 - [Thorsten Seyschab](https://todde.tv)
 
-Honorable mentions to people and projects that helped this project:
+Honorable mentions to people that helped this project:
 
-\[currently none\]
+- \[currently none\]
 
-Used services, dependencies and materials - besides the ones in `./package.json`:
+Respectable mentions to projects that helped this project:
+
+- My own talk titled `Playing with Vue in 3D` that was held on 2024-09-17 at the PragVue 2024 conference in Prag was the foundation of this project. See the project code here: [https://github.com/toddeTV/talk_2024-09-17_PragVue-conference](https://github.com/toddeTV/talk_2024-09-17_PragVue-conference)
+
+Used programs/ softwares, services and dependencies - besides the ones in `./package.json`:
 
 - [GitHub Copilot](https://github.com/features/copilot) was used in private mode for programming questions.
 - [Slidev](https://github.com/slidevjs/slidev) used for creating the slides of the talk.
 - [ChatGPT](https://chatgpt.com/) used for DALL-E image generation, text based questions and programming code generation.
 
+Used assets/ materials including images and 3D models:
+
+- Game Project `zlig` hosted on [https://zlig.net/](https://zlig.net/) with source code on [https://github.com/toddeTV/zlig](https://github.com/toddeTV/zlig). Included materials in `zlig` are listed separately there as they are not part of this presentation project.
+- Portrait from `Thorsten Seyschab` by [Franziska Kestel](https://franziskakestel.de/).
+- Logo for `TresJS` from [https://tresjs.org/](https://tresjs.org/)
+- Logo for `ThreeJS` from [https://discourse.threejs.org/t/three-js-svg-logo/21835](https://discourse.threejs.org/t/three-js-svg-logo/21835)
+- Logo for `WebGL` from [https://en.m.wikipedia.org/wiki/File:WebGL_Logo.svg](https://en.m.wikipedia.org/wiki/File:WebGL_Logo.svg).
+
 ## License
 
-Private, only for Thorsten Seyschab.
-For more information see [LICENSE](./LICENSE) file.
 Copyright (c) 2024-present, [Thorsten Seyschab](https://todde.tv)
+
+This project, including original code and models, is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License ([CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)). Under this license, others are allowed to remix, adapt, and build upon this work non-commercially, provided they credit the project founder and license any derivative works under the same terms.
+
+Please note that this license applies only to the original content authored by the project’s creators. Third-party libraries, assets, 3D models, and other materials utilized in this project are listed under "Attribution/ Contribution" above and remain the property of their original creators, licensed under their respective terms.
+
+The project founder reserves the right to modify the terms of this license or to offer different licensing arrangements for specific use cases.
+
+For the full license text, please see the [LICENSE](./LICENSE) file.
+
+### Need a Different License?
+
+If you are interested in discussing a different licensing arrangement for individual use cases, please feel free to reach out. Custom licensing may be available, but it is not guaranteed.

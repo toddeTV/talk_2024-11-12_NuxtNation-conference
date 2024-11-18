@@ -37,5 +37,5 @@ layout: two-cols
 ::right::
 
 <BrowserWrapper max-height background="#E1F4FF">
-    <iframe width="100%" height="100%" src="//localhost:3000/game?world&camera&lights&meshes&shadows"></iframe>
+  <ZligIframe url="?world&camera&lights&meshes&shadows" />
 </BrowserWrapper>
