@@ -6,7 +6,12 @@ import { computed } from 'vue'
 const { currentPage, total } = useNav()
 
 const pageProcess = computed(() => {
-  return Math.round(((currentPage.value * 100) / total.value) * 100) / 100
+  const process = Math.round(((currentPage.value * 100) / total.value) * 100) / 100
+  if (process < 0)
+    return 0
+  if (process > 100)
+    return 100
+  return process
 })
 </script>
 

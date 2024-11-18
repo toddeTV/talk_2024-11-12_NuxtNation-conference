@@ -110,7 +110,6 @@ Tipp: Favorite them and use the search over all item collections at once: https:
 
 | full name               | shorthand      | license                                                         | note           |
 | ----------------------- | -------------- | --------------------------------------------------------------- | -------------- |
-| `phosphor`              | `ph`           | MIT                                                             |                |
 | `Material Design Icons` | `mdi`          | Apache 2.0 (commercial use is allowed, no attribution required) |                |
 | `Material Line Icons`   | `line-md`      | MIT                                                             | animated icons |
 | `Ant Design Icons`      | `ant-design`   | MIT                                                             |                |
