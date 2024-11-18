@@ -74,6 +74,8 @@ jobs:
             // Set issue number for following calls from context (if on pull request event) or from above variable.
             const issueNumber = context.issue.number || pullRequests.data[0].number
 
+            const outputPrefix = "[Preview deployed]"
+
             // Retrieve existing bot comments for the PR
             const {data: comments} = await github.rest.issues.listComments({
                 owner: context.repo.owner,
@@ -81,14 +83,14 @@ jobs:
                 issue_number: issueNumber,
             })
             const botComment = comments.find(comment => {
-                return comment.user.type === 'Bot' && comment.body.includes('Preview deployed (')
+                return comment.user.type === 'Bot' && comment.body.includes(outputPrefix)
             })
 
             // Get the current date and time
             const now = (new Date).toISOString()
 
             // Create the output message
-            const output = "Preview deployed (" + now + "): " + process.env.DEPLOYMENT_URL
+            const output = outputPrefix + "\n" + "URL: " + process.env.DEPLOYMENT_URL + "\n Last Updated: " + now
 
             // If we have a comment, update it, otherwise create a new one
             if (botComment) {
