@@ -1,9 +1,11 @@
 name: Vercel Preview Deployment
 
 on:
-  push:
-    branches-ignore:
-      - main
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
 
 env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
@@ -49,7 +51,7 @@ jobs:
           URL=$(cat deploy.log | grep -o 'https:\/\/[^ ]*.vercel.app' | head -n1)
           echo "deploymentUrl=$URL" >> $GITHUB_OUTPUT
 
-  add-comment-to-pr:
+  add-comment-to-pr: # thanks to: https://github.com/vercel/vercel/discussions/9065#discussioncomment-7384786
     runs-on: ubuntu-latest
     needs: vercel-deploy-preview
     permissions:
