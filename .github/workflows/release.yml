@@ -1,17 +1,14 @@
-name: release
+name: Release Creation
 
 on:
   push:
-    # branches: [main]
+    branches:
+      - main
     tags:
-      - 'v*'
-  pull_request:
-    # branches: [main]
-    tags:
-      - 'v*'
+      - '*-*-*'
 
 jobs:
-  release:
+  create-release:
     name: Create Release
     runs-on: ubuntu-latest
     steps:
