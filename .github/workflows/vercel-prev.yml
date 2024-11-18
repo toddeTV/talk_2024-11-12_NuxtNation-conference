@@ -16,12 +16,21 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - run: corepack enable
+      # - name: Setup pnpm as package manager
+      #   uses: pnpm/action-setup@v3 # docs https://pnpm.io/continuous-integration#github-actions
+      #   with:
+      #       version: 9.10.0
 
-      - uses: actions/setup-node@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: 20
-          cache: pnpm
+          node-version: '20'
+          cache: 'pnpm'
+
+      - name: Configure PNPM Global Directory
+        run: |
+          pnpm setup
+          echo "export PATH=$(pnpm root -g)/../bin:\$PATH" >> $GITHUB_ENV
 
       - name: Install Vercel CLI
         run: pnpm add --global vercel@latest
