@@ -2,11 +2,10 @@ name: Vercel Production Deployment
 
 on:
   push:
-    # This is a OR, not a AND, so we ignore the check for the main branch
-    # branches:
-    #   - main
+    branches:
+      - main
     tags:
-      - '[0-9]{4}-[0-9]{2}-[0-9]{2}'
+      - '[0-9]{4}-[0-9]{2}-[0-9]{2}' # Regex to match ISO date format
 
 env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
