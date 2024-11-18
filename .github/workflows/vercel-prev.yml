@@ -10,7 +10,6 @@ on:
 env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-  VITE_ZLIG_DEMO_BASE_URL: ${{ secrets.VITE_ZLIG_DEMO_BASE_URL }}
 
 jobs:
   vercel-deploy-preview:
@@ -43,7 +42,8 @@ jobs:
 
       - name: Build Project Artifacts
         run: |
-          export VITE_ZLIG_DEMO_BASE_URL=${{ secrets.VITE_ZLIG_DEMO_BASE_URL }}
+          # export VITE_ZLIG_DEMO_BASE_URL=${{ secrets.VITE_ZLIG_DEMO_BASE_URL }}
+          echo "VITE_ZLIG_DEMO_BASE_URL=${{ secrets.VITE_ZLIG_DEMO_BASE_URL }}" >> $GITHUB_ENV
           vercel build --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Deploy Project Artifacts to Vercel
