@@ -16,6 +16,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - run: corepack enable
+      
       # - name: Setup pnpm as package manager
       #   uses: pnpm/action-setup@v3 # docs https://pnpm.io/continuous-integration#github-actions
       #   with:
