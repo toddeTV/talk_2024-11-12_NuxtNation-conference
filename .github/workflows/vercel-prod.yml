@@ -17,9 +17,14 @@ jobs:
   vercel-deploy-production:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout the Codebase
+        uses: actions/checkout@v3
 
-      # - run: corepack enable
+      - name: Environment Setup
+        uses: ./.github/actions/environment-setup
+
+      # - name: Enable Corepack
+      #   run: corepack enable
 
       - name: Setup pnpm as package manager
         uses: pnpm/action-setup@v3
