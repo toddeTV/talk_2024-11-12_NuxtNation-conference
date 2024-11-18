@@ -27,9 +27,6 @@ importers:
       '@iconify-json/mdi':
         specifier: 1.2.0
         version: 1.2.0
-      '@iconify-json/ph':
-        specifier: 1.2.0
-        version: 1.2.0
       '@iconify-json/simple-icons':
         specifier: 1.2.11
         version: 1.2.11
