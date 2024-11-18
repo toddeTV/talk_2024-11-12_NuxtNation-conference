@@ -49,7 +49,7 @@ jobs:
 
   add-comment-to-pr:
     runs-on: ubuntu-latest
-    needs: Deploy-Preview
+    needs: vercel-deploy-preview
     permissions:
       issues: write
       pull-requests: write
