@@ -26,13 +26,13 @@ jobs:
       - name: Setup pnpm as package manager
         uses: pnpm/action-setup@v3
         with:
-            version: 9.10.0
+          version: 9.10.0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'pnpm'
+          cache: pnpm
 
       - name: Install Vercel CLI
         run: pnpm add --global vercel@latest
@@ -50,7 +50,7 @@ jobs:
           URL=$(cat deploy.log | grep -o 'https://[^ ]*.vercel.app' | head -n1)
           echo "deploymentUrl=$URL" >> $GITHUB_OUTPUT
 
- Add-Comment:
+  add-comment-to-pr:
     runs-on: ubuntu-latest
     needs: Deploy-Preview
     permissions:
