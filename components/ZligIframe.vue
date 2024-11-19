@@ -1,9 +1,15 @@
 <script setup lang="ts">
+import { process } from 'node:process'
 import { computed } from 'vue'
 
 const props = defineProps<{
   url: string
 }>()
+
+console.dir(1)
+console.dir(import.meta.env.VITE_ZLIG_DEMO_BASE_URL)
+console.dir(2)
+console.dir(process.env.VITE_ZLIG_DEMO_BASE_URL)
 
 const zligDemoBaseUrl = computed<string | undefined>(() => {
   if (import.meta
