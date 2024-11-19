@@ -9,7 +9,7 @@ on:
   workflow_run:
     workflows:
       - Linting
-    types: 
+    types:
       - completed
 
 env:
