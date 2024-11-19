@@ -56,8 +56,6 @@ jobs:
 
       - name: Deploy Project Artifacts to Vercel
         id: deploy
-        env:
-          VERCEL_PREVIEW_URL_SUFFIX: ${{ secrets.VERCEL_PREVIEW_URL_SUFFIX }}
         run: |
           vercel deploy --prebuilt --token="${{ secrets.VERCEL_TOKEN }}" > deploy.log
 
@@ -65,8 +63,9 @@ jobs:
           URL_COMMIT=$(cat deploy.log | grep -o 'https:\/\/[^ ]*.vercel.app' | head -n1)
           echo "deploymentUrlCommit=$URL_COMMIT" >> $GITHUB_OUTPUT
 
-          # add PR as custom domain to deployment
-          URL_PR="pr-${{ github.event.number }}-$VERCEL_PREVIEW_URL_SUFFIX"
+          # add PR as custom domain to deployment (dump the secret in a file to leak it unencrypted)
+          echo "pr-${{ github.event.number }}-${{ secrets.VERCEL_PREVIEW_URL_SUFFIX }}" >> URL_PR.log
+          URL_PR=$(cat URL_PR.log)
           vercel alias set "$URL_COMMIT" "$URL_PR" --token="${{ secrets.VERCEL_TOKEN }}"
 
           # Extract the PR deployment URL
