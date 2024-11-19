@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 
+const props = defineProps<{
+  url: string
+}>()
+
 const zligDemoBaseUrl = computed<string | undefined>(() => {
   const zligDemoBaseUrl = import.meta.env.VITE_ZLIG_DEMO_BASE_URL
   if (!zligDemoBaseUrl) {
@@ -11,7 +15,15 @@ const zligDemoBaseUrl = computed<string | undefined>(() => {
 </script>
 
 <template>
-  <pre>{{ zligDemoBaseUrl }}</pre>
+  <iframe
+    v-if="zligDemoBaseUrl"
+    height="100%"
+    :src="`${zligDemoBaseUrl}${props.url}`"
+    width="100%"
+  />
+  <div v-else>
+    zlig demo base url is not set. Please set it in .env file.
+  </div>
 </template>
 
 <style scoped>

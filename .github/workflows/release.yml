@@ -1,15 +1,16 @@
 name: Release Creation
 
 on:
-  push:
-    branches:
-      - main
-    tags:
-      - '[0-9]{4}-[0-9]{2}-[0-9]{2}' # Regex to match ISO date format
+  workflow_call: {} # allow this workflow to be called from other workflows
 
 jobs:
+  dependence-lint:
+    uses: ./.github/workflows/lint.yml
+
   create-release:
     name: Create Release
+    needs:
+      - dependence-lint
     runs-on: ubuntu-latest
     steps:
       - name: Determine tag and set as env var
