@@ -66,7 +66,7 @@ jobs:
           echo "deploymentUrlCommit=$URL_COMMIT" >> $GITHUB_OUTPUT
 
           # add PR as custom domain to deployment
-          URL_PR="pr-${{ github.event.number }}-${{ VERCEL_PREVIEW_URL_SUFFIX }}"
+          URL_PR="pr-${{ github.event.number }}-${{ env.VERCEL_PREVIEW_URL_SUFFIX }}"
           vercel alias set "$URL_COMMIT" "$URL_PR" --token="${{ secrets.VERCEL_TOKEN }}"
 
           # Extract the PR deployment URL
