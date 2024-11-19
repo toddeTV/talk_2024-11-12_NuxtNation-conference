@@ -11,15 +11,15 @@ env:
   VERCEL_TELEMETRY_DISABLED: 1
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-  VITE_ZLIG_DEMO_BASE_URL: ${{ secrets.VITE_ZLIG_DEMO_BASE_URL }}
 
 jobs:
-  dependence:
+  dependence-lint:
     uses: ./.github/workflows/lint.yml
 
   vercel-deploy-preview:
     name: Vercel Deploy Preview
-    needs: dependence
+    needs: 
+      - dependence-lint
     runs-on: ubuntu-latest
     outputs: # needs `id` to reference the output
       deploymentUrl: ${{ steps.deploy.outputs.deploymentUrl }}
@@ -51,10 +51,10 @@ jobs:
         env:
           VITE_ZLIG_DEMO_BASE_URL: ${{ secrets.VITE_ZLIG_DEMO_BASE_URL }}
         run: |
-          export VITE_ZLIG_DEMO_BASE_URL="${{ secrets.VITE_ZLIG_DEMO_BASE_URL }}"
-          echo "VITE_ZLIG_DEMO_BASE_URL=${{ secrets.VITE_ZLIG_DEMO_BASE_URL }}" >> $GITHUB_ENV
-          VITE_ZLIG_DEMO_BASE_URL="${{ secrets.VITE_ZLIG_DEMO_BASE_URL }}" vercel build --token=${{ secrets.VERCEL_TOKEN }}
-          # vercel build --token=${{ secrets.VERCEL_TOKEN }}
+          # export VITE_ZLIG_DEMO_BASE_URL="${{ secrets.VITE_ZLIG_DEMO_BASE_URL }}"
+          # echo "VITE_ZLIG_DEMO_BASE_URL=${{ secrets.VITE_ZLIG_DEMO_BASE_URL }}" >> $GITHUB_ENV
+          # VITE_ZLIG_DEMO_BASE_URL="${{ secrets.VITE_ZLIG_DEMO_BASE_URL }}" vercel build --token=${{ secrets.VERCEL_TOKEN }}
+          vercel build --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Deploy Project Artifacts to Vercel
         id: deploy
