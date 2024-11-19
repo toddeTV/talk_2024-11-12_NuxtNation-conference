@@ -59,9 +59,8 @@ jobs:
       - name: Deploy Project Artifacts to Vercel
         id: deploy
         run: |
-          # cache the PR name for later use as preview url
-          PR_NAME="pr-${{ github.event.number }}"
-          vercel deploy --prebuilt --token="${{ secrets.VERCEL_TOKEN }}" --name="${{ PR_NAME }}" > deploy.log
+          # use the PR number as preview url
+          vercel deploy --prebuilt --token="${{ secrets.VERCEL_TOKEN }}" --name="pr-${{ github.event.number }}" > deploy.log
           URL=$(cat deploy.log | grep -o 'https:\/\/[^ ]*.vercel.app' | head -n1)
           echo "deploymentUrl=$URL" >> $GITHUB_OUTPUT
 
