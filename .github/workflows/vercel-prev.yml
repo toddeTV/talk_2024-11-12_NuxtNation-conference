@@ -68,7 +68,7 @@ jobs:
           vercel alias set "$URL_COMMIT" "$URL_PR" --token="${{ secrets.VERCEL_TOKEN }}"
 
           # Extract the PR deployment URL
-          echo "deploymentUrlPR=$URL_COMMIT" >> $GITHUB_OUTPUT
+          echo "deploymentUrlPR=$URL_PR" >> $GITHUB_OUTPUT
 
       # - name: Vercel Action
       #   uses: amondnet/vercel-action@v25
