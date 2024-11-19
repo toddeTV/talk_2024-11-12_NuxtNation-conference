@@ -4,7 +4,6 @@ leftOrientation: center
 ---
 
 <h1 class="!text-5xl">Playing with Nuxt in 3D</h1>
-Die Variable lautet: `{{ process.env.VITE_ZLIG_DEMO_BASE_URL }}`
 
 <div class="flex flex-col">
     <div>
