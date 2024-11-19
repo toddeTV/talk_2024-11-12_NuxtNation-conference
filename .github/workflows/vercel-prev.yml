@@ -6,11 +6,6 @@ on:
       - opened
       - synchronize
       - reopened
-  workflow_run:
-    workflows:
-      - Linting
-    types:
-      - completed
 
 env:
   VERCEL_TELEMETRY_DISABLED: 1
@@ -19,10 +14,11 @@ env:
   VITE_ZLIG_DEMO_BASE_URL: ${{ secrets.VITE_ZLIG_DEMO_BASE_URL }}
 
 jobs:
+  dependence:
+    uses: ./.github/workflows/lint.yml
   vercel-deploy-preview:
     name: Vercel Deploy Preview
-    # needs: lint
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    needs: dependence
     runs-on: ubuntu-latest
     outputs: # needs `id` to reference the output
       deploymentUrl: ${{ steps.deploy.outputs.deploymentUrl }}

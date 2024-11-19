@@ -11,6 +11,7 @@ on:
     branches:
       - dev
   workflow_dispatch: {}
+  workflow_call: {} # allow this workflow to be called from other workflows
 
 jobs:
   lint:
