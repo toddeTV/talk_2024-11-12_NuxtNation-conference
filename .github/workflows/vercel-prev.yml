@@ -46,7 +46,7 @@ jobs:
           # test
           export VITE_ZLIG_DEMO_BASE_URL="${{ secrets.VITE_ZLIG_DEMO_BASE_URL }}"
           echo "VITE_ZLIG_DEMO_BASE_URL=${{ secrets.VITE_ZLIG_DEMO_BASE_URL }}" >> $GITHUB_ENV
-          vercel env ls
+          vercel env ls --token=${{ secrets.VERCEL_TOKEN }}
           # VITE_ZLIG_DEMO_BASE_URL="${{ secrets.VITE_ZLIG_DEMO_BASE_URL }}" vercel build --token=${{ secrets.VERCEL_TOKEN }}
           vercel build --token=${{ secrets.VERCEL_TOKEN }}
 
