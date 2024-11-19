@@ -1,5 +1,4 @@
 {
-  "CI": true,
   "buildCommand": "pnpm run build",
   "git": {
     "deploymentEnabled": false
