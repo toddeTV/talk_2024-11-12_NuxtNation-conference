@@ -63,7 +63,7 @@ jobs:
       #     vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }} > deploy.log
       #     URL=$(cat deploy.log | grep -o 'https:\/\/[^ ]*.vercel.app' | head -n1)
       #     echo "deploymentUrl=$URL" >> $GITHUB_OUTPUT
-      
+
       - name: Vercel Action
         uses: amondnet/vercel-action@v25
         env:
