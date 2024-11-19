@@ -1,3 +1,4 @@
+import { process } from 'node:process'
 import slidev from '@slidev/cli/plugin'
 import { defineConfig } from 'vite'
 
