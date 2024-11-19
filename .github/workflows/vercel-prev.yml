@@ -63,7 +63,7 @@ jobs:
           echo "deploymentUrl=$URL" >> $GITHUB_OUTPUT
 
           # add PR as custom domain to deployment
-          vercel alias ${{ deploymentUrl }} "https://pr-${{ context.payload.pull_request.number }}.talk2024-11-12nuxtnation-conference.toddetv-projects.vercel.app"
+          vercel alias "$deploymentUrl" "https://pr-${{ context.payload.pull_request.number }}.talk2024-11-12nuxtnation-conference.toddetv-projects.vercel.app"
 
       # - name: Vercel Action
       #   uses: amondnet/vercel-action@v25
