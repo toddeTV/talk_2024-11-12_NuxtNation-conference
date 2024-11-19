@@ -6,6 +6,11 @@ on:
       - opened
       - synchronize
       - reopened
+  workflow_run:
+    workflows:
+      - Linting
+    types: 
+      - completed
 
 env:
   VERCEL_TELEMETRY_DISABLED: 1
@@ -15,7 +20,9 @@ env:
 
 jobs:
   vercel-deploy-preview:
-    needs: lint
+    name: Vercel Deploy Preview
+    # needs: lint
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     outputs: # needs `id` to reference the output
       deploymentUrl: ${{ steps.deploy.outputs.deploymentUrl }}
@@ -58,6 +65,7 @@ jobs:
           echo "deploymentUrl=$URL" >> $GITHUB_OUTPUT
 
   add-comment-to-pr: # thanks to: https://github.com/vercel/vercel/discussions/9065#discussioncomment-7384786
+    name: Add Comment to PR
     needs: vercel-deploy-preview
     runs-on: ubuntu-latest
     permissions:
