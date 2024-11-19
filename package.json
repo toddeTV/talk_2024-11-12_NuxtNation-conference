@@ -28,7 +28,7 @@
     "slidev": ">=v0.49.0"
   },
   "scripts": {
-    "build": "slidev build",
+    "build": "VITE_ZLIG_DEMO_BASE_URL=$VITE_ZLIG_DEMO_BASE_URL slidev build",
     "dev": "slidev --open",
     "dev:network": "run-s \"dev --remote\"",
     "export": "slidev export",
