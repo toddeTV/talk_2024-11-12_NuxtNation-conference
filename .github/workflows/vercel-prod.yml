@@ -14,6 +14,7 @@ env:
 
 jobs:
   dependence-release:
+    name: Depend on Release
     uses: ./.github/workflows/release.yml
 
   vercel-deploy-production:

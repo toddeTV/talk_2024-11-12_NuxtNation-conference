@@ -5,6 +5,7 @@ on:
 
 jobs:
   dependence-lint:
+    name: Depend on Lint
     uses: ./.github/workflows/lint.yml
 
   create-release:
