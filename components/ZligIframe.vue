@@ -6,9 +6,13 @@ const props = defineProps<{
   url: string
 }>()
 
+// eslint-disable-next-line no-console
 console.dir(1)
+// eslint-disable-next-line no-console
 console.dir(import.meta.env.VITE_ZLIG_DEMO_BASE_URL)
+// eslint-disable-next-line no-console
 console.dir(2)
+// eslint-disable-next-line no-console
 console.dir(process.env.VITE_ZLIG_DEMO_BASE_URL)
 
 const zligDemoBaseUrl = computed<string | undefined>(() => {
