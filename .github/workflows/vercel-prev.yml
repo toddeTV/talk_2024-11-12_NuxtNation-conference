@@ -18,7 +18,7 @@ jobs:
 
   vercel-deploy-preview:
     name: Vercel Deploy Preview
-    needs: 
+    needs:
       - dependence-lint
     runs-on: ubuntu-latest
     outputs: # needs `id` to reference the output
@@ -86,7 +86,8 @@ jobs:
 
   add-comment-to-pr:
     name: Add Comment to PR
-    needs: vercel-deploy-preview
+    needs:
+      - vercel-deploy-preview
     runs-on: ubuntu-latest
     permissions:
       issues: write
