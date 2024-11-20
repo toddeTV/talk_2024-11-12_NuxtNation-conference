@@ -64,12 +64,14 @@ jobs:
           echo "deploymentUrlCommit=$URL_COMMIT" >> $GITHUB_OUTPUT
 
           # add PR as custom domain to deployment (dump the secret in a file to leak it unencrypted)
-          echo "pr-${{ github.event.number }}-${{ secrets.VERCEL_PREVIEW_URL_SUFFIX }}" >> URL_PR.log
-          URL_PR=$(cat URL_PR.log)
+          # echo "pr-${{ github.event.number }}-${{ secrets.VERCEL_PREVIEW_URL_SUFFIX }}" >> URL_PR.log
+          # URL_PR=$(cat URL_PR.log)
+          VERCEL_PREVIEW_URL_SUFFIX_UNENCRYPTED=$(echo ${{ secrets.VERCEL_PREVIEW_URL_SUFFIX }} | sed 's/./& /g')
+          URL_PR="pr-${{ github.event.number }}-$VERCEL_PREVIEW_URL_SUFFIX_UNENCRYPTED"
           vercel alias set "$URL_COMMIT" "$URL_PR" --token="${{ secrets.VERCEL_TOKEN }}"
 
           # Extract the PR deployment URL
-          echo "deploymentUrlPR=$URL_PR" >> $GITHUB_OUTPUT
+          echo "deploymentUrlPR=\"$URL_PR\"" >> $GITHUB_OUTPUT
 
       # - name: Vercel Action
       #   uses: amondnet/vercel-action@v25
