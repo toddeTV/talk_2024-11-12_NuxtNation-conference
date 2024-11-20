@@ -61,22 +61,21 @@ jobs:
 
           # Extract the commit deployment URL from the Vercel CLI output
           URL_COMMIT=$(cat deploy.log | grep -o 'https:\/\/[^ ]*.vercel.app' | head -n1)
-          echo "deploymentUrlCommit=$URL_COMMIT" >> $GITHUB_OUTPUT
 
-          # add PR as custom domain to deployment (dump the secret in a file to leak it unencrypted)
-          # echo "pr-${{ github.event.number }}-${{ secrets.VERCEL_PREVIEW_URL_SUFFIX }}" >> URL_PR.log
-          # URL_PR=$(cat URL_PR.log)
-
-          # VERCEL_PREVIEW_URL_SUFFIX_UNENCRYPTED_SPACE=$(echo ${{ secrets.VERCEL_PREVIEW_URL_SUFFIX }} | sed 's/./& /g')
-          # VERCEL_PREVIEW_URL_SUFFIX_UNENCRYPTED=$(echo $VERCEL_PREVIEW_URL_SUFFIX_UNENCRYPTED_SPACE | sed 's/ //g')
-          # URL_PR="pr-${{ github.event.number }}-$VERCEL_PREVIEW_URL_SUFFIX_UNENCRYPTED"
-
+          # remove the first and the last character from the secret in order to unencrypt it
+          # (Otherwise GitHub will treat it as a secret and hide it, but we want to expose this secret later to the user)
           VERCEL_PREVIEW_URL_SUFFIX_UNENCRYPTED=$(echo "${{ secrets.VERCEL_PREVIEW_URL_SUFFIX }}" | cut -c 2- | rev | cut -c 2- | rev)
           URL_PR="pr-${{ github.event.number }}-$VERCEL_PREVIEW_URL_SUFFIX_UNENCRYPTED"
+
+          # VERCEL_PREVIEW_URL_SUFFIX_UNENCRYPTED="${VERCEL_PREVIEW_URL_SUFFIX:1:-1}"
+          # URL_PR="pr-${{ github.event.number }}-$VERCEL_PREVIEW_URL_SUFFIX_UNENCRYPTED"
+
+          # add the PR number as custom domain to the Vercel preview deployment
           vercel alias set "$URL_COMMIT" "$URL_PR" --token="${{ secrets.VERCEL_TOKEN }}"
 
-          # Extract the PR deployment URL
-          echo "deploymentUrlPR=\"$URL_PR\"" >> $GITHUB_OUTPUT
+          # output the GitHub action output for the next job
+          echo "deploymentUrlCommit=$URL_COMMIT" >> $GITHUB_OUTPUT
+          echo "deploymentUrlPR=$URL_PR" >> $GITHUB_OUTPUT
 
       # - name: Vercel Action
       #   uses: amondnet/vercel-action@v25
