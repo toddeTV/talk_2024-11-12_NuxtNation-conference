@@ -1,0 +1,69 @@
+name: Vercel Production Deployment
+
+on:
+  push:
+    # The conditions are OR conditions, so they can not concatinate with AND
+    # branches:
+    #   - main
+    tags:
+      - '[0-9]{4}-[0-9]{2}-[0-9]{2}' # Regex to match ISO date format
+
+env:
+  VERCEL_TELEMETRY_DISABLED: 1
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
+jobs:
+  check-main-branch:
+    name: Check Main Branch
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Main Branch
+        run: |
+          if [ $GITHUB_REF != 'refs/heads/main' ]; then
+            echo "This is not the main branch, exiting ..."
+            exit 1
+          fi
+
+  dependence-release:
+    name: Depend on Release
+    needs:
+      - check-main-branch
+    uses: ./.github/workflows/release.yml
+
+  vercel-deploy-production:
+    name: Vercel Deploy Production
+    needs:
+      - dependence-release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the Codebase
+        uses: actions/checkout@v3
+
+      # - name: Enable Corepack
+      #   run: corepack enable
+
+      - name: Setup pnpm as package manager
+        uses: pnpm/action-setup@v3
+        with:
+          version: 9.10.0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: pnpm
+
+      - name: Install Vercel CLI
+        run: pnpm add --global vercel@latest
+
+      - name: Pull Vercel Environment Information
+        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Build Project Artifacts
+        env:
+          VITE_ZLIG_DEMO_BASE_URL: ${{ secrets.VITE_ZLIG_DEMO_BASE_URL }}
+        run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Deploy Project Artifacts to Vercel
+        run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
