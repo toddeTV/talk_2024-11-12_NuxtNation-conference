@@ -19,14 +19,14 @@ jobs:
     steps:
       - name: Checkout the Codebase
         uses: actions/checkout@v3
-        
+
       - name: Check Main Branch
         uses: actions/github-script@v7
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            console.dir(github.context)
-            const branch = github.context.ref
+            console.dir(context)
+            const branch = context.ref
             if (branch !== 'refs/heads/main') {
               core.setFailed('Not on the main branch')
               exit(1)
