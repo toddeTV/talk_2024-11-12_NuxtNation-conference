@@ -67,7 +67,7 @@ jobs:
           # echo "pr-${{ github.event.number }}-${{ secrets.VERCEL_PREVIEW_URL_SUFFIX }}" >> URL_PR.log
           # URL_PR=$(cat URL_PR.log)
           VERCEL_PREVIEW_URL_SUFFIX_UNENCRYPTED_SPACE=$(echo ${{ secrets.VERCEL_PREVIEW_URL_SUFFIX }} | sed 's/./& /g')
-          VERCEL_PREVIEW_URL_SUFFIX_UNENCRYPTED=$(echo ${{ VERCEL_PREVIEW_URL_SUFFIX_UNENCRYPTED_SPACE }} | sed 's/ //g')
+          VERCEL_PREVIEW_URL_SUFFIX_UNENCRYPTED=$(echo $VERCEL_PREVIEW_URL_SUFFIX_UNENCRYPTED_SPACE | sed 's/ //g')
           URL_PR="pr-${{ github.event.number }}-$VERCEL_PREVIEW_URL_SUFFIX_UNENCRYPTED"
           vercel alias set "$URL_COMMIT" "$URL_PR" --token="${{ secrets.VERCEL_TOKEN }}"
 
