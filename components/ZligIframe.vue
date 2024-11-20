@@ -6,12 +6,11 @@ const props = defineProps<{
 }>()
 
 const zligDemoBaseUrl = computed<string | undefined>(() => {
-  if (import.meta
-    && 'env' in import.meta
-    && 'VITE_ZLIG_DEMO_BASE_URL' in import.meta.env) {
-    return import.meta.env.VITE_ZLIG_DEMO_BASE_URL as string
+  const zligDemoBaseUrl = import.meta.env.VITE_ZLIG_DEMO_BASE_URL
+  if (!zligDemoBaseUrl) {
+    return undefined
   }
-  return undefined
+  return zligDemoBaseUrl
 })
 </script>
 

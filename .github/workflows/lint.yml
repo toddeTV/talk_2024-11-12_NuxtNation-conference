@@ -4,16 +4,18 @@ permissions:
   contents: read
 
 on:
-  push:
-    branches:
-      - dev
-  pull_request:
-    branches:
-      - dev
-  workflow_dispatch: {}
+  # push:
+  #   branches:
+  #     - dev
+  # pull_request:
+  #   branches:
+  #     - dev
+  workflow_dispatch: {} # allow triggering this workflow manually
+  workflow_call: {} # allow this workflow to be called from other workflows
 
 jobs:
   lint:
+    name: Lint
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the Codebase
