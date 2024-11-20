@@ -65,10 +65,7 @@ jobs:
           # remove the first and the last character from the secret in order to unencrypt it
           # (Otherwise GitHub will treat it as a secret and hide it, but we want to expose this secret later to the user)
           VERCEL_PREVIEW_URL_SUFFIX_UNENCRYPTED=$(echo "${{ secrets.VERCEL_PREVIEW_URL_SUFFIX }}" | cut -c 2- | rev | cut -c 2- | rev)
-          URL_PR="pr-${{ github.event.number }}-$VERCEL_PREVIEW_URL_SUFFIX_UNENCRYPTED"
-
-          # VERCEL_PREVIEW_URL_SUFFIX_UNENCRYPTED="${VERCEL_PREVIEW_URL_SUFFIX:1:-1}"
-          # URL_PR="pr-${{ github.event.number }}-$VERCEL_PREVIEW_URL_SUFFIX_UNENCRYPTED"
+          URL_PR="https://pr-${{ github.event.number }}-$VERCEL_PREVIEW_URL_SUFFIX_UNENCRYPTED"
 
           # add the PR number as custom domain to the Vercel preview deployment
           vercel alias set "$URL_COMMIT" "$URL_PR" --token="${{ secrets.VERCEL_TOKEN }}"
@@ -124,6 +121,12 @@ jobs:
 
             // Set issue number for following calls from context (if on pull request event) or from above variable.
             const issueNumber = context.issue.number || context.payload.pull_request.number || pullRequests.data[0].number
+
+            console.dir('here xxx')
+            console.dir(context.issue)
+            console.dir(context.payload)
+            console.dir(github.sha)
+            console.dir(github)
 
             // Set output prefix
             const outputPrefix = "👀 Preview deployed"
