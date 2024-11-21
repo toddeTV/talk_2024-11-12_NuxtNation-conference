@@ -23,15 +23,13 @@ jobs:
     #   ${{ needs.get_processed_variables.outputs.<output_id> }}
     #   ${{ steps.set_processed_variables.outputs.<output_id> }}
     outputs:
-      branchName: ${{ steps.set_outputs.outputs.branchName }}
-      tagName: ${{ steps.set_outputs.outputs.tagName }}
+      branchName: ${{ steps.set_processed_variables.outputs.branchName }}
+      tagName: ${{ steps.set_processed_variables.outputs.tagName }}
     steps:
       - name: Set Processed Variables
         id: set_processed_variables
         uses: actions/github-script@v7
         with:
-          with: |
-            core
           script: |
             // get the branch name (only available when run on branches, commits or tags - not when run on PRs)
             const branchNameRaw = context?.payload?.base_ref
