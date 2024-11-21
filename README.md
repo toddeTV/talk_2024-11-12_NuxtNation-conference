@@ -7,7 +7,7 @@ This project contains the slides for my talk titled `Playing with Nuxt in 3D` on
 The presented, repository and documentation language is `English`.
 
 You can find pre deployed slides here, so that you can view them without the need of pulling the code and setting the project up yourself:<br>
-\[currently not deployed\]
+[https://talk2024-11-12nuxtnation-conference.vercel.app/](https://talk2024-11-12nuxtnation-conference.vercel.app/)
 
 ## dev
 
