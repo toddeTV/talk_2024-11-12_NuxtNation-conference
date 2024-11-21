@@ -49,6 +49,9 @@ jobs:
       - name: Set Processed Variables as Outputs
         id: set_outputs
         run: |
+          echo "${{steps.set_results.outputs}}"
+          echo "${{steps.set_results.outputs.result}}"
+          echo "${{steps.set_results.outputs.result.branchName}}"
           echo "branchName=${{steps.set_results.outputs.result.branchName}}" >> $GITHUB_OUTPUT
           echo "tagName=${{steps.set_results.outputs.result.tagName}}" >> $GITHUB_OUTPUT
 
@@ -65,7 +68,8 @@ jobs:
           TAG_NAME: ${{ needs.get_processed_variables.outputs.tagName }}
         with:
           script: |
-            console.dir(process.env)
+            console.dir(process.env.BRANCH_NAME)
+            console.dir(process.env.TAG_NAME)
 
   dependence-lint:
     name: Depend on Lint
