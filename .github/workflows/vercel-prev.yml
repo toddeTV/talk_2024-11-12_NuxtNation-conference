@@ -1,11 +1,11 @@
 name: Vercel Preview Deployment
 
 on:
-  push:
-    # The conditions are OR conditions, so we must check the main branch later and cannot use the branch filter here.
-    # Also, regex is not fully supported for branch filters, so we must check the tag structure later.
-    tags:
-      - '*'
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
 
 env:
   VERCEL_TELEMETRY_DISABLED: 1
@@ -13,6 +13,10 @@ env:
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 
 jobs:
+  dependence_processed_variables:
+    name: Depend on Processed Variables
+    uses: ./.github/workflows/processed-variables.yml
+
   dependence-lint:
     name: Depend on Lint
     uses: ./.github/workflows/lint.yml
@@ -21,13 +25,14 @@ jobs:
     name: Vercel Deploy Preview
     needs:
       - dependence-lint
+      - dependence_processed_variables
     runs-on: ubuntu-latest
-    outputs: # needs step id to reference the output
+    outputs:
       deploymentUrlCommit: ${{ steps.deploy.outputs.deploymentUrlCommit }}
       deploymentUrlPR: ${{ steps.deploy.outputs.deploymentUrlPR }}
     steps:
       - name: Checkout the Codebase
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       # - name: Enable Corepack
       #   run: corepack enable
@@ -56,6 +61,8 @@ jobs:
 
       - name: Deploy Project Artifacts to Vercel
         id: deploy
+        env:
+          ISSUE_NUMBER: ${{ needs.dependence_processed_variables.outputs.issueNumber }}
         run: |
           vercel deploy --prebuilt --token="${{ secrets.VERCEL_TOKEN }}" > deploy.log
 
@@ -65,7 +72,7 @@ jobs:
           # remove the first and the last character from the secret in order to unencrypt it
           # (Otherwise GitHub will treat it as a secret and hide it, but we want to expose this secret later to the user)
           VERCEL_PREVIEW_URL_SUFFIX_UNENCRYPTED=$(echo "${{ secrets.VERCEL_PREVIEW_URL_SUFFIX }}" | cut -c 2- | rev | cut -c 2- | rev)
-          URL_PR="pr-${{ github.event.number }}-$VERCEL_PREVIEW_URL_SUFFIX_UNENCRYPTED"
+          URL_PR="pr-$ISSUE_NUMBER-$VERCEL_PREVIEW_URL_SUFFIX_UNENCRYPTED"
 
           # add the PR number as custom domain to the Vercel preview deployment
           vercel alias set "$URL_COMMIT" "$URL_PR" --token="${{ secrets.VERCEL_TOKEN }}"
@@ -98,6 +105,7 @@ jobs:
     name: Add Comment to PR
     needs:
       - vercel-deploy-preview
+      - dependence_processed_variables
     runs-on: ubuntu-latest
     permissions:
       issues: write
@@ -109,13 +117,15 @@ jobs:
         env:
           DEPLOYMENT_URL_COMMIT: ${{ needs.vercel-deploy-preview.outputs.deploymentUrlCommit }}
           DEPLOYMENT_URL_PR: ${{ needs.vercel-deploy-preview.outputs.deploymentUrlPR }}
+          ISSUE_NUMBER: ${{ needs.dependence_processed_variables.outputs.issueNumber }}
+          LAST_COMMIT_SHA: ${{ needs.dependence_processed_variables.outputs.lastCommitSha }}
         with:
           script: |
             // get issue number
-            const issueNumber = context.issue.number || context.payload.pull_request.number
+            const issueNumber = process.env.ISSUE_NUMBER
 
             // get last commit sha
-            const lastCommitSha = context.payload.after
+            const lastCommitSha = process.env.LAST_COMMIT_SHA
 
             // set output prefix
             const outputPrefix = "👀 Preview deployed"
@@ -171,14 +181,14 @@ jobs:
 
             // If we have a comment, update it, otherwise create a new one
             if (botComment) {
-                github.rest.issues.updateComment({
+                await github.rest.issues.updateComment({
                     owner: context.repo.owner,
                     repo: context.repo.repo,
                     comment_id: botComment.id,
                     body: output
                 })
             } else {
-                github.rest.issues.createComment({
+                await github.rest.issues.createComment({
                     issue_number: issueNumber,
                     owner: context.repo.owner,
                     repo: context.repo.repo,
