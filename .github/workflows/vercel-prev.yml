@@ -24,10 +24,12 @@ jobs:
 
       - name: Check Main Branch
         uses: actions/github-script@v7
+        env:
+          BRANCH_NAME: ${{ steps.extract_branch_name.outputs.branch }}
         with:
           script: |
-            console.dir(steps.extract_branch_name)
-            const branch = steps.extract_branch_name.outputs.branch
+            const branch = process.env.BRANCH_NAME
+            console.dir(branch)
             if (branch !== 'refs/heads/main') {
               core.setFailed('Not on the main branch')
               exit(1)
