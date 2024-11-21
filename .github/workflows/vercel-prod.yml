@@ -30,7 +30,9 @@ jobs:
           script: |
             const tagName = process.env.TAG_NAME
             if (!/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/.test(tagName)) {
-              core.setFailed('The tag triggering this workflow was not structured as date `YYYY-MM-DD`, which is required. The workflow will now exit.')
+              const msg = `Tag named '${tagName}' triggering this workflow and it is not structured as date \
+                           'YYYY-MM-DD', which is required. The workflow will now exit.`
+              core.setFailed(msg)
             }
 
   check-main-branch:
@@ -52,7 +54,9 @@ jobs:
           script: |
             const branchName = process.env.BRANCH_NAME
             if (branchName !== 'main') {
-              core.setFailed('This workflow was not run on the main branch, which is required. The workflow will now exit.')
+              const msg = `This workflow was run on branch '${branchName}' and this is not the main branch, which \
+                           is required. The workflow will now exit.`
+              core.setFailed(msg)
             }
 
   dependence-release:

@@ -1,11 +1,11 @@
 name: Vercel Preview Deployment
 
 on:
-  push:
-    # The conditions are OR conditions, so we must check the main branch later and cannot use the branch filter here.
-    # Also, regex is not fully supported for branch filters, so we must check the tag structure later.
-    tags:
-      - '*'
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
 
 env:
   VERCEL_TELEMETRY_DISABLED: 1
