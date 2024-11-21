@@ -32,6 +32,9 @@ jobs:
             const tagName = tagNameRaw.replace(/^refs\/tags\//, "")
             console.dir(tagName)
 
+            console.dir(context)
+            console.dir(context.base_ref)
+
             // get the branch name
             const branchNameRaw = context.base_ref
             const branchName = branchNameRaw.replace(/^refs\/heads\//, "")
