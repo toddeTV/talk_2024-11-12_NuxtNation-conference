@@ -50,7 +50,7 @@ layout: basic
             </div>
             <div class="w-full">
                 <mdi-github class="baseColor mx-2" />
-                <a rel="noopener noreferrer" target="_blank" href="https://github.com/toddeTV/talk_2024-11-12_NuxtNation-conference">https://.com/toddeTV/talk_2024-11-12_NuxtNation-conference</a>
+                <a rel="noopener noreferrer" target="_blank" href="https://github.com/toddeTV/talk_2024-11-12_NuxtNation-conference">https://github.com/toddeTV/talk_2024-11-12_NuxtNation-conference</a>
             </div>
         </div>
     </div>
