@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the Codebase
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       # - name: Enable Corepack
       #   run: corepack enable
