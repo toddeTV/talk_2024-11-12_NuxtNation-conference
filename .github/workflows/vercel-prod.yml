@@ -39,7 +39,7 @@ jobs:
   check-main-branch:
     name: Check Main Branch
     needs:
-      - check-tag-structure
+      - dependence_processed_variables
     runs-on: ubuntu-latest
     steps:
       - name: Check Main Branch
@@ -58,6 +58,7 @@ jobs:
   dependence-release:
     name: Depend on Release
     needs:
+      - check-tag-structure
       - check-main-branch
     uses: ./.github/workflows/release.yml
 

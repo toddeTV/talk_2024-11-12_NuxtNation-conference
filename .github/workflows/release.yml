@@ -10,14 +10,13 @@ jobs:
 
   dependence-lint:
     name: Depend on Lint
-    needs:
-      - dependence_processed_variables
     uses: ./.github/workflows/lint.yml
 
   create-release:
     name: Create Release
     needs:
       - dependence-lint
+      - dependence_processed_variables
     runs-on: ubuntu-latest
     steps:
       - name: Create Release
