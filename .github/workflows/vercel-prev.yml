@@ -53,7 +53,7 @@ jobs:
   dependence-lint:
     name: Depend on Lint
     needs:
-      - check-tag-structure
+      - get-processed-variables
     uses: ./.github/workflows/lint.yml
 
   vercel-deploy-preview:
