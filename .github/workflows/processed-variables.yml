@@ -10,10 +10,10 @@ jobs:
     # Use via one of the following as env or directly in `run`:
     #   ${{ needs.create_processed_variables.outputs.<output_id> }}
     #   ${{ steps.set_processed_variables.outputs.<output_id> }}
-    outputs:
-      branchName: ${{ steps.set_processed_variables.outputs.branchName }}
-      tagName: ${{ steps.set_processed_variables.outputs.tagName }}
-      issueNumber: ${{ steps.set_processed_variables.outputs.issueNumber }}
+    # outputs:
+    #   branchName: ${{ steps.set_processed_variables.outputs.branchName }}
+    #   tagName: ${{ steps.set_processed_variables.outputs.tagName }}
+    #   issueNumber: ${{ steps.set_processed_variables.outputs.issueNumber }}
     steps:
       - name: Set Processed Variables
         id: set_processed_variables
@@ -34,11 +34,6 @@ jobs:
 
             // get the issue/ PR number
             const issueNumber = context?.issue?.number || context?.payload?.pull_request?.number
-
-            console.dir(issueNumber)
-            console.dir(context)
-            console.dir(context.issue)
-            console.dir(context.payload)
 
             // set outputs
             core.setOutput("branchName", branchName)

@@ -29,9 +29,9 @@ jobs:
       - name: Check Main Branch
         uses: actions/github-script@v7
         env:
-          BRANCH_NAME: ${{ needs.dependence_processed_variables.outputs.branchName }}
-          TAG_NAME: ${{ needs.dependence_processed_variables.outputs.tagName }}
-          ISSUE_NUMBER: ${{ needs.dependence_processed_variables.outputs.issueNumber }}
+          BRANCH_NAME: ${{ needs.dependence_processed_variables.steps.set_processed_variables.outputs.branchName }}
+          TAG_NAME: ${{ needs.dependence_processed_variables.steps.set_processed_variables.outputs.tagName }}
+          ISSUE_NUMBER: ${{ needs.dependence_processed_variables.steps.set_processed_variables.outputs.issueNumber }}
         with:
           script: |
             console.dir(process.env.BRANCH_NAME)
