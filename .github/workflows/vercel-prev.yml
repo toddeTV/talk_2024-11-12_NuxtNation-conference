@@ -29,10 +29,8 @@ jobs:
         with:
           script: |
             const branch = process.env.BRANCH_NAME
-            console.dir(branch)
-            if (branch !== 'refs/heads/main') {
-              core.setFailed('Not on the main branch')
-              exit(1)
+            if (branch !== 'main') {
+              core.setFailed('This workflow was not run on the main branch, which is required. The workflow will now exit.')
             }
 
   dependence-lint:
