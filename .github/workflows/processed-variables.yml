@@ -35,6 +35,11 @@ jobs:
             // get the issue/ PR number
             const issueNumber = context?.issue?.number || context?.payload?.pull_request?.number
 
+            console.dir(issueNumber)
+            console.dir(context)
+            console.dir(context.issue)
+            console.dir(context.payload)
+
             // set outputs
             core.setOutput("branchName", branchName)
             core.setOutput("tagName", tagName)
