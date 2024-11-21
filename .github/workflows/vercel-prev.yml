@@ -23,28 +23,19 @@ jobs:
     name: Check Tag Structure
     runs-on: ubuntu-latest
     steps:
-      - name: Extract Tag Name
-        id: extract_tag_name
-        shell: bash
-        run: echo "tag_name=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/tags/}}" >> $GITHUB_OUTPUT
-
       - name: Check Tag Name
         uses: actions/github-script@v7
-        env:
-          TAG_NAME: ${{ steps.extract_tag_name.outputs.tag_name }}
         with:
           script: |
-            console.dir('github.event')
-            console.dir(github.event)
-            console.dir('context')
-            console.dir(context)
-            console.dir('core')
-            console.dir(core)
-            console.dir('glob')
-            console.dir(glob)
-            console.dir('io')
-            console.dir(io)
-            core.setFailed('exit')
+            // get the tag name
+            const tagNameRaw = context.ref ?? context.payload.ref
+            const tagName = tagNameRaw.replace(/^refs\/tags\//, "")
+            console.dir(tagName)
+
+            // get the branch name
+            const branchNameRaw = context.base_ref
+            const branchName = branchNameRaw.replace(/^refs\/heads\//, "")
+            console.dir(branchName)
 
   dependence-lint:
     name: Depend on Lint
