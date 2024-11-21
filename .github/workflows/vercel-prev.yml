@@ -34,7 +34,11 @@ jobs:
           TAG_NAME: ${{ steps.extract_tag_name.outputs.tag_name }}
         with:
           script: |
-            console.dir(github)
+            console.dir('github.event', github.event)
+            console.dir('context', context)
+            console.dir('core', core)
+            console.dir('glob', glob)
+            console.dir('io', io)
             core.setFailed('exit')
 
   dependence-lint:
