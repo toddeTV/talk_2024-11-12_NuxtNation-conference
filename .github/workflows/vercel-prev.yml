@@ -19,15 +19,15 @@ jobs:
   get-processed-variables:
     name: Get Processed Variables
     runs-on: ubuntu-latest
-    outputs: # needs step id to reference the output
-      tagName: ${{ steps.set_outputs.outputs.tagName }}
-      branchName: ${{ steps.set_outputs.outputs.branchName }}
+    # outputs: # needs step id to reference the output
+    #   tagName: ${{ steps.set_outputs.outputs.tagName }}
+    #   branchName: ${{ steps.set_outputs.outputs.branchName }}
     steps:
       - name: Check Tag Name
         id: set_results
         uses: actions/github-script@v7
         with:
-          result-encoding: json
+          # result-encoding: json
           script: |
             // get the tag name (can be 'refs/tags/<TAG_NAME>', 'refs/pull/<PR_NUMBER>/merge', ...)
             const tagNameRaw = context?.ref ?? context?.payload?.ref
@@ -37,23 +37,41 @@ jobs:
             const branchNameRaw = context?.payload?.base_ref
             const branchName = branchNameRaw?.replace(/^refs\/heads\//, "")
 
-            // return as object
-            return {
-              tagName,
-              branchName
-            }
+            // set the processed variables as environment variables
+            process.env.TODDE_TAG_NAME = tagName
+            process.env.TODDE_BRANCH_NAME = branchName
 
-      - name: Set Processed Variables as Outputs
-        id: set_outputs
-        run: |
-          echo ${{steps.set_results}}
-          echo "tagName=${{steps.set_results.outputs.result.tagName}}" >> $GITHUB_OUTPUT
-          echo "branchName=${{steps.set_results.outputs.result.branchName}}" >> $GITHUB_OUTPUT
+            // // return as object
+            // return {
+            //   tagName,
+            //   branchName
+            // }
+
+      # - name: Set Processed Variables as Outputs
+      #   id: set_outputs
+      #   run: |
+      #     echo ${{steps.set_results.result}}
+      #     echo ${{steps.set_results.result.tagName}}
+      #     echo ${{steps.set_results.result.branchName}}
+      #     echo "tagName=${{steps.set_results.outputs.result.tagName}}" >> $GITHUB_ENV
+      #     echo "branchName=${{steps.set_results.outputs.result.branchName}}" >> $GITHUB_ENV
+
+  check-main-branch:
+    name: Check Main Branch
+    needs:
+      - get-processed-variables
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Main Branch
+        uses: actions/github-script@v7
+        with:
+          script: |
+            console.dir(process.env)
 
   dependence-lint:
     name: Depend on Lint
     needs:
-      - get-processed-variables
+      - check-main-branch
     uses: ./.github/workflows/lint.yml
 
   vercel-deploy-preview:
