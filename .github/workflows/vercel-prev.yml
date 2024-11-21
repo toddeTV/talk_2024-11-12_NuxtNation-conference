@@ -19,14 +19,13 @@ jobs:
 
   dependence-lint:
     name: Depend on Lint
-    needs:
-      - dependence_processed_variables
     uses: ./.github/workflows/lint.yml
 
   vercel-deploy-preview:
     name: Vercel Deploy Preview
     needs:
       - dependence-lint
+      - dependence_processed_variables
     runs-on: ubuntu-latest
     outputs:
       deploymentUrlCommit: ${{ steps.deploy.outputs.deploymentUrlCommit }}
@@ -106,6 +105,7 @@ jobs:
     name: Add Comment to PR
     needs:
       - vercel-deploy-preview
+      - dependence_processed_variables
     runs-on: ubuntu-latest
     permissions:
       issues: write
