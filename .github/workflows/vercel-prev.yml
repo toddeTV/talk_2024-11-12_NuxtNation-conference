@@ -6,6 +6,9 @@ on:
       - opened
       - synchronize
       - reopened
+  push:
+    tags:
+      - '*'
 
 env:
   VERCEL_TELEMETRY_DISABLED: 1
@@ -13,25 +16,39 @@ env:
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 
 jobs:
-  check-tag-structure:
-    name: Check Tag Structure
+  get-processed-variables:
+    name: Get Processed Variables
     runs-on: ubuntu-latest
+    outputs: # needs step id to reference the output
+      tagName: ${{ steps.set_outputs.outputs.tagName }}
+      branchName: ${{ steps.set_outputs.outputs.branchName }}
     steps:
       - name: Check Tag Name
+        id: set_results
         uses: actions/github-script@v7
         with:
+          result-encoding: json
           script: |
             // get the tag name (can be 'refs/tags/<TAG_NAME>', 'refs/pull/<PR_NUMBER>/merge', ...)
-            const tagNameRaw = context.ref ?? context.payload.ref
-            const tagName = tagNameRaw.replace(/^refs\/tags\//, "")
-            console.dir(tagName)
+            const tagNameRaw = context?.ref ?? context?.payload?.ref
+            const tagName = tagNameRaw?.replace(/^refs\/tags\//, "")
 
-            console.dir(context)
+            // get the branch name (only available when run on branches, commits or tags - not when run on PRs)
+            const branchNameRaw = context?.payload?.base_ref
+            const branchName = branchNameRaw?.replace(/^refs\/heads\//, "")
 
-            // get the branch name
-            const branchNameRaw = context.payload.base_ref
-            const branchName = branchNameRaw.replace(/^refs\/heads\//, "")
-            console.dir(branchName)
+            // return as object
+            return {
+              tagName,
+              branchName
+            }
+
+      - name: Set Processed Variables as Outputs
+        id: set_outputs
+        run: |
+          echo ${{steps.set_results}}
+          echo "tagName=${{steps.set_results.outputs.result.tagName}}" >> $GITHUB_OUTPUT
+          echo "branchName=${{steps.set_results.outputs.result.branchName}}" >> $GITHUB_OUTPUT
 
   dependence-lint:
     name: Depend on Lint
