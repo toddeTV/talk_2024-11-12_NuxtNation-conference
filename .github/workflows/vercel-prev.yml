@@ -27,20 +27,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          echo ${{ needs.dependence_processed_variables }}
-          echo ${{ needs.dependence_processed_variables.jobs }}
-          echo ${{ needs.dependence_processed_variables.steps }}
-          echo ${{ needs.dependence_processed_variables.outputs }}
-          echo ${{ needs.dependence_processed_variables.create_processed_variables }}
-          echo ${{ needs.dependence_processed_variables.create_processed_variables.steps }}
-          echo ${{ needs.dependence_processed_variables.create_processed_variables.outputs }}
+          echo ${{ toJson(needs.dependence_processed_variables) }} | jq
 
       - name: Check Main Branch
         uses: actions/github-script@v7
         env:
-          BRANCH_NAME: ${{ needs.dependence_processed_variables.steps.set_processed_variables.outputs.branchName }}
-          TAG_NAME: ${{ needs.dependence_processed_variables.steps.set_processed_variables.outputs.tagName }}
-          ISSUE_NUMBER: ${{ needs.dependence_processed_variables.steps.set_processed_variables.outputs.issueNumber }}
+          BRANCH_NAME: ${{ needs.dependence_processed_variables.outputs.branchName }}
+          TAG_NAME: ${{ needs.dependence_processed_variables.outputs.tagName }}
+          ISSUE_NUMBER: ${{ needs.dependence_processed_variables.outputs.issueNumber }}
         with:
           script: |
             console.dir(process.env.BRANCH_NAME)
