@@ -1,11 +1,17 @@
 name: Release Creation
 
 on:
-  workflow_call: {} # allow this workflow to be called from other workflows
+  workflow_call: {}
 
 jobs:
+  dependence_processed_variables:
+    name: Depend on Processed Variables
+    uses: ./.github/workflows/processed-variables.yml
+
   dependence-lint:
     name: Depend on Lint
+    needs:
+      - dependence_processed_variables
     uses: ./.github/workflows/lint.yml
 
   create-release:
@@ -14,11 +20,10 @@ jobs:
       - dependence-lint
     runs-on: ubuntu-latest
     steps:
-      - name: Determine tag and set as env var
-        run: echo "RELEASE_TAG=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
-
       - name: Create Release
         uses: actions/github-script@v7
+        env:
+          TAG_NAME: ${{ needs.dependence_processed_variables.outputs.tagName }}
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
@@ -26,11 +31,11 @@ jobs:
               await github.rest.repos.createRelease({
                 draft: false,
                 generate_release_notes: true,
-                name: process.env.RELEASE_TAG,
+                name: process.env.TAG_NAME,
                 owner: context.repo.owner,
                 prerelease: false,
                 repo: context.repo.repo,
-                tag_name: process.env.RELEASE_TAG,
+                tag_name: process.env.TAG_NAME,
               });
             } catch (error) {
               core.setFailed(error.message);
