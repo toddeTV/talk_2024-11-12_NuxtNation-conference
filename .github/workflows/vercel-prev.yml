@@ -31,10 +31,12 @@ jobs:
         env:
           BRANCH_NAME: ${{ needs.dependence_processed_variables.outputs.branchName }}
           TAG_NAME: ${{ needs.dependence_processed_variables.outputs.tagName }}
+          ISSUE_NUMBER: ${{ needs.dependence_processed_variables.outputs.issueNumber }}
         with:
           script: |
             console.dir(process.env.BRANCH_NAME)
             console.dir(process.env.TAG_NAME)
+            console.dir(process.env.ISSUE_NUMBER)
 
   dependence-lint:
     name: Depend on Lint
