@@ -4,16 +4,16 @@ on:
   workflow_call:
     outputs:
       branchName:
-        description: "The branch name"
+        description: The branch name
         value: ${{ jobs.create_processed_variables.outputs.branchName }}
       tagName:
-        description: "The tag name"
+        description: The tag name
         value: ${{ jobs.create_processed_variables.outputs.tagName }}
       issueNumber:
-        description: "The issue or PR number"
+        description: The issue or PR number
         value: ${{ jobs.create_processed_variables.outputs.issueNumber }}
       lastCommitSha:
-        description: "The last commit sha"
+        description: The last commit sha
         value: ${{ jobs.create_processed_variables.outputs.lastCommitSha }}
 
 jobs:
@@ -33,15 +33,15 @@ jobs:
           script: |
             // get the branch name (only available when run on branches, commits or tags - not when run on PRs)
             const branchNameRaw = context?.payload?.base_ref
-            const branchName = branchNameRaw?.startsWith('refs/heads/') 
-              ? branchNameRaw?.replace(/^refs\/heads\//, "") 
+            const branchName = branchNameRaw?.startsWith('refs/heads/')
+              ? branchNameRaw?.replace(/^refs\/heads\//, "")
               : undefined
             core.setOutput("branchName", branchName)
 
             // get the tag name (can be 'refs/tags/<TAG_NAME>', 'refs/pull/<PR_NUMBER>/merge', ...)
             const tagNameRaw = context?.ref ?? context?.payload?.ref
-            const tagName = tagNameRaw?.startsWith('refs/tags/') 
-              ? tagNameRaw?.replace(/^refs\/tags\//, "") 
+            const tagName = tagNameRaw?.startsWith('refs/tags/')
+              ? tagNameRaw?.replace(/^refs\/tags\//, "")
               : undefined
             core.setOutput("tagName", tagName)
 
