@@ -10,10 +10,10 @@ jobs:
     # Use via one of the following as env or directly in `run`:
     #   ${{ needs.create_processed_variables.outputs.<output_id> }}
     #   ${{ steps.set_processed_variables.outputs.<output_id> }}
-    # outputs:
-    #   branchName: ${{ steps.set_processed_variables.outputs.branchName }}
-    #   tagName: ${{ steps.set_processed_variables.outputs.tagName }}
-    #   issueNumber: ${{ steps.set_processed_variables.outputs.issueNumber }}
+    outputs:
+      branchName: ${{ steps.set_processed_variables.outputs.branchName }}
+      tagName: ${{ steps.set_processed_variables.outputs.tagName }}
+      issueNumber: ${{ steps.set_processed_variables.outputs.issueNumber }}
     steps:
       - name: Set Processed Variables
         id: set_processed_variables
