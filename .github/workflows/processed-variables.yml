@@ -1,7 +1,17 @@
 name: Get Processed Variables
 
 on:
-  workflow_call: {} # allow this workflow to be called from other workflows
+  workflow_call: # allow this workflow to be called from other workflows
+    outputs:
+      branchName:
+        description: "The branch name"
+        value: ${{ jobs.create_processed_variables.outputs.branchName }}
+      tagName:
+        description: "The tag name"
+        value: ${{ jobs.create_processed_variables.outputs.tagName }}
+      issueNumber:
+        description: "The issue or PR number"
+        value: ${{ jobs.create_processed_variables.outputs.issueNumber }}
 
 jobs:
   create_processed_variables:

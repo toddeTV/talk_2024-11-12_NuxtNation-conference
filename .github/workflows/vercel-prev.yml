@@ -19,10 +19,6 @@ jobs:
   dependence_processed_variables:
     name: Depend on Processed Variables
     uses: ./.github/workflows/processed-variables.yml
-    outputs:
-      branchName: ${{ jobs.create_processed_variables.outputs.branchName }}
-      tagName: ${{ jobs.create_processed_variables.outputs.tagName }}
-      issueNumber: ${{ jobs.create_processed_variables.outputs.issueNumber }}
 
   check-main-branch:
     name: Check Main Branch
